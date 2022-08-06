@@ -6,45 +6,46 @@
     
   <section class="panel important">
     <div style="text-align: right;">
-    <button class="addnew">Add New Employee</button>
+    <button class="addnew" data-toggle="modal" data-target="#exampleModal1">Add New Employee</button>
   </div>
   <br>
     <div class="caption">Com&Dev  Employees DETAILS</div>	
     <div id="table">
       <div class="header-row row">
         <span class="cell"><a href="#">Picture<i class="fa fa-fw fa-sort"></i></a></span>
-        <span class="cell"><a href="#">First Name<i class="fa fa-fw fa-sort"></i></a></span>
+        <span class="cell"><a href="#">FirstName<i class="fa fa-fw fa-sort"></i></a></span>
         <span class="cell primary"><a href="#">Last Name<i class="fa fa-fw fa-sort"></i></a></span>
         <span class="cell"><a href="#">Adress<i class="fa fa-fw fa-sort"></i></a></span>
         <span class="cell"><a href="#">Email<i class="fa fa-fw fa-sort"></i></a></span>
-        <span class="cell"><a href="#">Manage</a></span>
+        <span class="cell"><a href="#">Account Comfirmed<i class="fa fa-fw fa-sort"></i></a></span>
+        <span class="cell"><a href="#">update employee</a></span>
+        <span class="cell"><a href="#">delete employee</a></span>
       </div>
-      <div class="row">
+      <div class="row" *ngFor="let item of dataArray; index as i">
       <input type="radio" name="expand">
       
-      <span class="cell primary" data-label="Vehicle"><img src="https://bootdey.com/img/Content/avatar/avatar7.png"  height="65" width="90"></span>
-        <span class="cell primary" data-label="Vehicle">Mghirbi</span>
-        <span class="cell" data-label="Exterior">Mohamed amine</span>
-         <span class="cell" data-label="Interior">kalla sghira sousse</span>
-        <span class="cell" data-label="Trans">test@gmail.com</span>
+      <span class="cell primary" data-label="Vehicle"><img src="{{item.user_image_url}}"  height="65" width="90"></span>
+        <span class="cell primary" data-label="Vehicle">{{item.firstname}}</span>
+        <span class="cell" data-label="Exterior">{{item.lastname}}</span>
+         <span class="cell" data-label="Interior">{{item.adress}}</span>
+         
+        <span class="cell" data-label="Trans">{{item.email}}</span>
+        <span class="cell" data-label="Trans">
+          <button *ngIf="item.email_confirmed===null ||item.email_confirmed===false" class="btn btn-outline-danger btn-lg" > false </button>
+          <button *ngIf="item.email_confirmed===true "class="btn btn-outline-success btn-lg" > {{item.email_confirmed}} </button>
+
+
+        </span>
         <span class="cell" data-label="Trans">
           <button class="update">Update </button>&nbsp;
-          <button class="delete">Delete </button>
+  
         </span>
-      </div>
-            <div class="row">
-      <input type="radio" name="expand">
-      
-      <span class="cell primary" data-label="Vehicle"><img src="https://bootdey.com/img/Content/avatar/avatar7.png"  height="65" width="90"></span>
-        <span class="cell primary" data-label="Vehicle">Mghirbi</span>
-        <span class="cell" data-label="Exterior">Mohamed amine</span>
-         <span class="cell" data-label="Interior">kalla sghira sousse</span>
-        <span class="cell" data-label="Trans">test@gmail.com</span>
         <span class="cell" data-label="Trans">
-          <button class="update">Update </button>&nbsp;
-          <button class="delete">Delete </button>
+
+          <button   (click)="deleteemployee(item.id , i)" class="delete">Delete </button>
         </span>
       </div>
+
 
     </div>
     
@@ -53,4 +54,39 @@
 
   
   </main>
-  
+  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add  New Employee</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="addemployee" #f="ngForm" (ngSubmit)="addnewemployee (f); f.reset()" > 
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Email  </label>
+              <input type="text" name="email" [(ngModel)]="user.email" formControlName="email"  class="form-control"    required>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Password  </label>        
+              <input type="password" class="form-control" [(ngModel)]="user.password" formControlName="password" name="password"    rows="3" required /> 
+            </div> 
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Role </label>
+              <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="user.role" formControlName="role" name="role">
+                <option > employe </option>
+              </select><br>
+            </div>
+            
+            
+            <br>
+            <div class="form-group">
+                <button class="btn btn-danger" type="submit">save</button>
+            </div>
+          </form>
+        </div>   
+      </div>
+    </div>
+  </div>

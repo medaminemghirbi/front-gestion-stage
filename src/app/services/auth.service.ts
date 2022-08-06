@@ -18,4 +18,14 @@ export class AuthService {
     
     return this.http.post(environment.urlBackend + 'sessions/', data);
   }
+
+  logout(){
+    this.connecte = false;
+    sessionStorage.clear();
+    return this.http.delete(environment.urlBackend+'logout/') ;
+  }
+  getcurrentuser(){
+    return this.http.get(environment.urlBackend + 'logged_in/')
+  }
+
 }

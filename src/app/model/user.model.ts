@@ -5,7 +5,7 @@ export class User {
     email? : string;
     adresse? : string;
     password?:string;
-
+    role?:string;
 
     }
     

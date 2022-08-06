@@ -5,13 +5,14 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { EmployeeRequestsComponent } from './admin/employee-requests/employee-requests.component';
 import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
 import { IndexComponent } from './index/index.component';
+import { GuardGuard } from './services/guard.guard';
 
 const routes: Routes = [
   {path:'',component:IndexComponent},
-  {path:'dashboard-RH',component:DashboardComponent},
-  {path:'manage-users',component:ManageUsersComponent},
-  {path:'employee-requests',component:EmployeeRequestsComponent},
-  {path:'admin-profil',component:AdminProfilComponent}
+  {path:'dashboard-RH', canActivate:[GuardGuard], component:DashboardComponent},
+  {path:'manage-users',canActivate:[GuardGuard], component:ManageUsersComponent},
+  {path:'employee-requests',canActivate:[GuardGuard], component:EmployeeRequestsComponent},
+  {path:'admin-profil',canActivate:[GuardGuard], component:AdminProfilComponent}
 ];
 
 @NgModule({
