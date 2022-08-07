@@ -3,73 +3,83 @@
 <app-side-bar></app-side-bar>
   
   <main role="main">
-    
-  <section class="panel important">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    <div class="container bootstrap snippets bootdeys">
-    <div class="row">
-      <div class="col-xs-12 col-sm-9">
-        <form class="form-horizontal">
-            <div class="panel panel-default">
-              <div class="panel-body text-center">
-               <img src="https://bootdey.com/img/Content/avatar/avatar7.png" width="200" class="img-circle profile-avatar" alt="User avatar">
-               <h6>Upload a different photo...</h6>
-               <input type="file" class="form-control">  
-            </div>
-            </div>
-          <div class="panel panel-default">
-            <div class="panel-heading">
-            <h4 style="color :green" class="panel-title">WebMaster info</h4>
-            </div>
-            <div class="panel-body">
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">E-mail address</label>
-                    <div class="col-sm-10">
-                      <input type="email" class="form-control">
-                    </div>
+    <section class="panel important">
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+      <div class="container bootstrap snippets bootdeys">
+         <div class="row">
+            <div class="col-xs-12 col-sm-9">
+              <form [formGroup]="imageupdate" #f="ngForm" (ngSubmit)="updateimage(f)">
+               <div class="panel panel-default">
+                  <div class="panel-body text-center">
+                     <img [src]="admindata.user_image_url" width="200" class="img-circle profile-avatar" alt="User avatar">
+                     <h6>Upload a different photo...</h6>
+                     <input type="file" class="form-control" (change)="fileChange($event)"  [defaultValue]="" class="form-control" formControlName="avatar" rows="3" width="110" required>  
                   </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label">Last name</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label">First Name</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label">Adress</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label">Password</label>
-                <div class="col-sm-10">
-                  <input type="tel" class="form-control">
-                </div>
-              </div><br>
-              <div class="form-group" style="text-align: right">
-                <div class="col-sm-10 col-sm-offset-2">
-                    <div>
-                        <input type="submit" value="Submit" />
-                      </div>
-               
-                </div>
-              </div>
+                  <br>
+                  <div style="text-align: center;">
+                     <button type="submit" class="btn btn-primary px-4" style="background-color: rgb(38, 8, 158);">Update Image</button>
+
+                  </div>
+                  <!--<div class="form-group" style="text-align: right">
+                    <div class="col-sm-10 col-sm-offset-2">
+                       <div>
+                          <input type="submit" value="Change Photo" />
+                       </div>
+                    </div>
+                 </div>-->
+               </div>
+              </form>
+               <form class="form-horizontal" [formGroup]="upadate" #f="ngForm" (ngSubmit)="updateadminprofil(f)">
+                  <div class="panel panel-default">
+                     <div class="panel-heading">
+                        <h4 style="color :green" class="panel-title">WebMaster info</h4>
+                     </div>
+                     <div class="panel-body">
+                        <div class="form-group">
+                           <label class="col-sm-2 control-label">Email </label>
+                           <div class="col-sm-10">
+                              <input readonly style="cursor: not-allowed;" type="email" class="form-control"formControlName="email"  placeholder="email" [(ngModel)]="admindata.email" required  ngModel>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                           <label class="col-sm-2 control-label">Lastname</label>
+                           <div class="col-sm-10">
+                              <input type="text" class="form-control" formControlName="lastname"  placeholder="lastname" [(ngModel)]="admindata.lastname" required  ngModel>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                           <label class="col-sm-2 control-label">FirstName</label>
+                           <div class="col-sm-10">
+                              <input type="text" class="form-control" formControlName="firstname"  placeholder="firstname" [(ngModel)]="admindata.firstname" required  ngModel>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                           <label class="col-sm-2 control-label">Adress</label>
+                           <div class="col-sm-10">
+                              <input type="text" class="form-control" formControlName="adress"  placeholder="adress" [(ngModel)]="admindata.adress" required  ngModel>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                           <label class="col-sm-2 control-label">Password</label>
+                           <div class="col-sm-10">
+                              <input type="password" class="form-control" formControlName="password"  placeholder="password" [(ngModel)]="admindata.password" required  ngModel>
+                           </div>
+                        </div>
+                        <br>
+                        <div class="form-group" style="text-align: right">
+                           <div class="col-sm-10 col-sm-offset-2">
+                              <div>
+                                 <input type="submit" value="Submit" />
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </form>
             </div>
-          </div>
-
-    
-
-        </form>
+         </div>
       </div>
-    </div>
-    </div>
-    </section>
+   </section>
     
 
   

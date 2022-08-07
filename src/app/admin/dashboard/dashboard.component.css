@@ -439,3 +439,98 @@ td {
   }
 }
 
+/*------------------------------------*\
+    Stats card
+\*------------------------------------*/
+.stats-card {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow .25s;
+  padding: 20px;
+  margin: 0.5rem 0 1rem 0;
+  background-color: #047009;
+}
+
+.stats-card:hover {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.stats-card > i {
+  position: absolute;
+  font-size: 6rem;
+  right: 0;
+  bottom: -1rem;
+}
+
+.stats-card > i[class*=ion-], .stats-card > i[class*=mdi-] {
+  bottom:-2.4rem
+}
+
+.stats-card .counter {
+  position: relative;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 2rem;
+}
+
+.stats-card .title {
+  position: relative;
+  font-size: 1rem;
+  line-height: 1rem;
+}
+
+/*------------------------------------*\
+  Base code
+\*------------------------------------*/
+html {
+  font-family: 'Roboto', Calibri, Trebuchet, sans-serif;
+  font-weight: 400; 
+}
+
+a {
+  color: #E8EAF6;
+  text-decoration: none;
+}
+
+h1 {
+  color: #08322e;
+  text-align: center;
+  font-size: 3rem;
+}
+
+hr {
+  margin-top: -15px;
+  background: #34495E; 
+  width: 75%; 
+  height: 2px;
+}
+
+/*------------------------------------*\
+  Grid
+\*------------------------------------*/
+.row {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+.row .col {
+  float: left;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0 0.75rem;
+}
+
+.row .col.s12 {
+  width: 100%;
+  margin-left: 0;
+}
+
+@media only screen and (min-width : 601px) {
+  .row .col.m4 {
+    width: 33.33333%;
+    margin-left: 0;
+  }
+}

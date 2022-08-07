@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { ChartsModule, MDBBootstrapModule  } from 'angular-bootstrap-md';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
@@ -29,6 +29,8 @@ import { AdminProfilComponent } from './admin/admin-profil/admin-profil.componen
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    ChartsModule,
+    MDBBootstrapModule
   ],
   providers: [],
   bootstrap: [AppComponent]

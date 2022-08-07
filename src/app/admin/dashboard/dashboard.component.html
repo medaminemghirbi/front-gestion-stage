@@ -6,9 +6,47 @@
     
   <section class="panel important">
 
-      <ul>
-        <li>Information  Dashboard Panel</li>
-      </ul>
+    <h1>Com&Dev Statistic</h1>
+
+    
+    <div class="row">
+    
+        <!-- Stats card -->
+          <div class="col s12 m4">
+            <a href="#" class="stats-card">
+              <i class="fa fa-user"></i>
+              <span class="counter">{{this.dataArray.data[0]}}</span>
+              <div class="title">Employees</div>
+            </a>
+          </div>
+
+        <!-- Stats card -->
+          <div class="col s12 m4">
+            <a href="#" class="stats-card">
+              <i class="fa fa-file-text-o"></i>
+              <span class="counter">{{this.dataArray.data[1]}}</span>
+              <div class="title">Requests</div>
+            </a>
+          </div>
+        <!-- //Stats card -->
+
+
+    
+    </div>
+    <hr/>
+    <div style="display: block" *ngIf="chartReady">
+      <canvas mdbChart
+        
+        [chartType]="chartType"
+        [datasets]="chartDatasets"
+        [labels]="chartLabels"
+        [colors]="chartColors"
+        [options]="chartOptions"
+        [legend]="true"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)">
+      </canvas>
+    </div>
     </section>
     
 
