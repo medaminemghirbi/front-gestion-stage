@@ -12,6 +12,9 @@ import { AdminHeaderComponent } from './admin/admin-header/admin-header.componen
 import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
 import { EmployeeRequestsComponent } from './admin/employee-requests/employee-requests.component';
 import { AdminProfilComponent } from './admin/admin-profil/admin-profil.component';
+import { DashboardEmployeeComponent } from './employee/dashboard-employee/dashboard-employee.component';
+import { EmployeeDemandesComponent } from './employee/employee-demandes/employee-demandes.component';
+import { ContactWebmasterComponent } from './employee/contact-webmaster/contact-webmaster.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,8 +24,10 @@ import { AdminProfilComponent } from './admin/admin-profil/admin-profil.componen
     AdminHeaderComponent,
     ManageUsersComponent,
     EmployeeRequestsComponent,
-    AdminProfilComponent
-  ],
+    AdminProfilComponent,
+    DashboardEmployeeComponent,
+    EmployeeDemandesComponent,
+    ContactWebmasterComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

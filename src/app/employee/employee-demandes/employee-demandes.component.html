@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Admin Dashbord html and css</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+<body>
+	<input type="checkbox" id="menu" name="">
+	<div class="sidebar">
+		<div class="sidebar-brand">
+			<h2><span class="fa fa-user-o"></span>Com&Dev System </h2>
+		</div>
+		<div class="sidebar-menu">
+			<ul>
+				<li>
+					<a routerLink="/dashboard-employee" ><span class="fa fa-home"></span><span>Home</span></a>
+				</li>
+				<li>
+					<a routerLink="/employee-demandes" class="active" ><span class="fa fa-tasks"></span><span>Demandes</span></a>
+				</li>
+				<li>
+					<a routerLink="/contact-webmaster"><span class="fa fa-user"></span><span>Contact Webmaster</span></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="content">	
+		<header>
+			<p><label for="menu"><span class="fa fa-bars"></span></label><span class="accueil">Demandes Page</span></p>
+			<div class="user-wrapper" id="dropdown">
+				<div>
+					<h4>Alassane</h4>
+					<small>Admin</small>
+				</div>
+				<img src="./assets/logo.jpg" width="30" height="30" class="logo-admin">
+				<div class="dropdown-content">
+				<p>Mon profil</p>
+				<p>Deconnexion</p>
+				</div>
+				
+			</div>
+		</header>
+		<main>
+
+			<div class="wrapper">
+				<br>
+				<h1>management of absences and paid leave</h1>
+				<div style="text-align: right;">
+					<button class="addnew" data-toggle="modal" data-target="#exampleModal1">Add New Demande</button>
+
+				</div>
+				<br>
+				<table class="c-table">
+				<thead class="c-table__header">
+				  <tr>
+					<th></th>
+					<th class="c-table__col-label"><h4>Start Date</h4> </th>
+					<th class="c-table__col-label"><h4>End Date</h4></th>
+					<th class="c-table__col-label"><h4>Motif</h4></th>
+					<th class="c-table__col-label"><h4>Status</h4></th>
+					<th class="c-table__col-label"><h4>Manage</h4></th>
+				  </tr>
+				</thead>
+				<tbody class="c-table__body">
+				  <tr>
+					<td>1</td>
+					<td class="c-table__cell"><h4>🇦🇺 Melbourne</h4></td>
+					<td class="c-table__cell"><h4>🇦🇺 Melbourne</h4></td>
+					<td class="c-table__cell"><h4>🇦🇺 Melbourne</h4></td>
+					<td class="c-table__cell"><h4>🇦🇹 Vienna</h4></td>
+					<td class="c-table__cell"><h4>🇦🇹 Vienna</h4></td>
+				  </tr>
+		
+				</tbody>
+			  </table>
+			  </div>  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </main>
+	</div>
+</body>
+</html>

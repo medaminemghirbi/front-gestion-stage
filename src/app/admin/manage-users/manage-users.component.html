@@ -14,7 +14,7 @@
       <div class="header-row row">
         <span class="cell"><a href="#">Picture<i class="fa fa-fw fa-sort"></i></a></span>
         <span class="cell"><a href="#">FirstName<i class="fa fa-fw fa-sort"></i></a></span>
-        <span class="cell primary"><a href="#">Last Name<i class="fa fa-fw fa-sort"></i></a></span>
+        <span class="cell primary"><a href="#">LastName<i class="fa fa-fw fa-sort"></i></a></span>
         <span class="cell"><a href="#">Adress<i class="fa fa-fw fa-sort"></i></a></span>
         <span class="cell"><a href="#">Email<i class="fa fa-fw fa-sort"></i></a></span>
         <span class="cell"><a href="#">Account Comfirmed<i class="fa fa-fw fa-sort"></i></a></span>
@@ -37,7 +37,8 @@
 
         </span>
         <span class="cell" data-label="Trans">
-          <button class="update">Update </button>&nbsp;
+          <button (click)="getdata(item.email,item.firstname,item.lastname,item.password,item.adress,item.image_url,item.id)"
+           data-toggle="modal" data-target="#exampleModal2" class="update">Update </button>&nbsp;
   
         </span>
         <span class="cell" data-label="Trans">
@@ -67,7 +68,7 @@
           <form [formGroup]="addemployee" #f="ngForm" (ngSubmit)="addnewemployee (f); f.reset()" > 
             <div class="form-group">
               <label for="exampleFormControlInput1">Email  </label>
-              <input type="text" name="email" [(ngModel)]="user.email" formControlName="email"  class="form-control"    required>
+              <input  type="text" name="email" [(ngModel)]="user.email" formControlName="email"  class="form-control"    required>
             </div>
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Password  </label>        
@@ -76,14 +77,63 @@
             <div class="form-group">
               <label for="exampleFormControlInput1">Role </label>
               <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="user.role" formControlName="role" name="role">
-                <option> employe </option>
+                <option selected="selected"> employee </option>
               </select><br>
             </div>
             
             
             <br>
             <div class="form-group">
-                <button class="btn btn-danger" type="submit">save</button>
+                <button class="btn btn-success" type="submit">Send Email Verification</button>
+            </div>
+          </form>
+        </div>   
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update   Employee</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="updateemployee" #f="ngForm" (ngSubmit)="updateempbloyee(f); f.reset()" > 
+            <div class="form-group">
+              <label  for="exampleFormControlInput1">Email  </label>
+              <input  readonly style="cursor: not-allowed;" type="text" name="email" [(ngModel)]="dataemp.email" formControlName="email"  class="form-control"    required>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">firstname  </label>        
+              <input type="text" class="form-control" [(ngModel)]="dataemp.firstname" formControlName="firstname" name="firstname"    rows="3" required /> 
+            </div> 
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">LastName  </label>        
+              <input type="text" class="form-control" [(ngModel)]="dataemp.lastname" formControlName="lastname" name="lastname"    rows="3" required /> 
+            </div> 
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Password  </label>        
+              <input type="password" class="form-control" [(ngModel)]="dataemp.password" formControlName="password" name="password"    rows="3" required /> 
+            </div> 
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Adress  </label>        
+              <input type="text" class="form-control" [(ngModel)]="dataemp.adress" formControlName="adress" name="adress"    rows="3" required /> 
+            </div> 
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Picture  </label>        
+
+              <input type="file" 
+              (change)="fileChange($event)"  class="form-control"  formControlName="avatar"  [(ngModel)]="dataemp.avatar" ngModel rows="3"   /> 
+              
+            </div>
+
+            
+            <br>
+            <div class="form-group">
+                <button   class="btn btn-danger" type="submit">save</button>
             </div>
           </form>
         </div>   

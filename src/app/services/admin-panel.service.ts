@@ -16,6 +16,10 @@ export class AdminPanelService {
   addnewemployee(data:any){
     return this.http.post<any>(environment.urlBackend + 'registrations/' , data)
   }
+
+  updateemployee(id:string,newdata:any){
+    return this.http.patch(environment.urlBackend+'updateemployeebyadmin/' + id , newdata )
+  }
   updateadminprofil(id:string,newprofile:any){
     return this.http.patch(environment.urlBackend+'updateadmin/' + id , newprofile )
   }
@@ -26,4 +30,6 @@ export class AdminPanelService {
   countall(){
     return this.http.get<any>(`${environment.urlBackend}`+'countall/')
   }
+    
+
 }

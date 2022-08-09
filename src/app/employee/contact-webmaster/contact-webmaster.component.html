@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Admin Dashbord html and css</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+<body>
+	<input type="checkbox" id="menu" name="">
+	<div class="sidebar">
+		<div class="sidebar-brand">
+			<h2><span class="fa fa-user-o"></span>Com&Dev System </h2>
+		</div>
+
+		<div class="sidebar-menu">
+			<ul>
+				<li>
+					<a routerLink="/dashboard-employee" ><span class="fa fa-home"></span><span>Home</span></a>
+				</li>
+				<li>
+					<a routerLink="/employee-demandes" ><span class="fa fa-tasks"></span><span>Demandes</span></a>
+				</li>
+
+
+
+
+
+				<li>
+					<a routerLink="/contact-webmaster" class="active"><span class="fa fa-user"></span><span>Contact Webmaster</span></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+
+
+	<div class="content">
+		
+		<header>
+			<p><label for="menu"><span class="fa fa-bars"></span></label><span class="accueil">Contact Page</span></p>
+			<!--<div class="search-wrapper">
+				<span class="fa fa-search"></span>
+				<input type="search" name="" placeholder="recherche" />
+			</div>-->
+			<div class="user-wrapper" id="dropdown">
+				<div>
+					<h4>Alassane</h4>
+					<small>Admin</small>
+				</div>
+				
+				<img src="./assets/logo.jpg" width="30" height="30" class="logo-admin">
+				<div class="dropdown-content">
+				<p>Mon profil</p>
+				<p>Deconnexion</p>
+				</div>
+				
+			</div>
+		</header>
+
+	<main>
+		<br>
+		<div style="text-align:center;">
+			<h2><span class="fa fa-user-o"></span>Contact Webmaster </h2>
+		</div>
+		
+		<div class="container">
+			<div class="contact-fome">
+			 <div class="input-class">
+				 <input type="text" class="input" placeholder="Your Name" required>
+				 <input type="email" class="input" placeholder="Your E-mail" required>
+				 <input type="tel" class="input" placeholder="Phone" required>
+				 <input type="text" class="input" placeholder="Subject">
+			 </div>
+			 <div class="msg">
+				 <textarea placeholder="Message" cols="30" rows="10"></textarea>
+				 <button class="btn" type="submit">Send</button>
+			 </div>
+			 </div>
+		 </div>
+    </main>
+	</div>
+</body>
+</html>
