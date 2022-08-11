@@ -2,13 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminProfilComponent } from './admin/admin-profil/admin-profil.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
-import { EmployeeRequestsComponent } from './admin/employee-requests/employee-requests.component';
+import { EmployeeRequestsComponent } from './employee/employee-requests/employee-requests.component';
 import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
-import { ContactWebmasterComponent } from './employee/contact-webmaster/contact-webmaster.component';
 import { DashboardEmployeeComponent } from './employee/dashboard-employee/dashboard-employee.component';
 import { EmployeeDemandesComponent } from './employee/employee-demandes/employee-demandes.component';
 import { IndexComponent } from './index/index.component';
 import { GuardGuard } from './services/guard.guard';
+import { EmployeeProfilComponent } from './employee/employee-profil/employee-profil.component';
+import { ManageReasonsComponent } from './admin/manage-reasons/manage-reasons.component';
 
 const routes: Routes = [
   {path:'',component:IndexComponent},
@@ -16,9 +17,10 @@ const routes: Routes = [
   {path:'manage-users',canActivate:[GuardGuard], component:ManageUsersComponent},
   {path:'employee-requests',canActivate:[GuardGuard], component:EmployeeRequestsComponent},
   {path:'admin-profil',canActivate:[GuardGuard], component:AdminProfilComponent},
+  {path:'manage-reasons',canActivate:[GuardGuard],component:ManageReasonsComponent},
+  {path:'employee-profil',component:EmployeeProfilComponent},
   {path:'dashboard-employee',component:DashboardEmployeeComponent},
   {path:'employee-demandes',component:EmployeeDemandesComponent},
-  {path:'contact-webmaster',component:ContactWebmasterComponent}
 ];
 
 @NgModule({

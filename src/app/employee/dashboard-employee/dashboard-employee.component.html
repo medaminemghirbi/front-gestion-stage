@@ -1,70 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>Admin Dashbord html and css</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  	<link rel="stylesheet" type="text/css"
-        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<app-employee-header></app-employee-header>
+<app-employee-sidebar></app-employee-sidebar>
+  
+  <main role="main">
+    
+  <section class="panel important">
+
+    <h1>Personal Statistic</h1>
+
+    
+    <div class="row">
+    
+        <!-- Stats card -->
+          <div class="col s12 m4">
+            <a href="#" class="stats-card">
+              <i class="fa fa-user"></i>
+              <span class="counter">0</span>
+              <div class="title">Accepted Requests</div>
+            </a>
+          </div>
+
+        <!-- Stats card -->
+          <div class="col s12 m4">
+            <a href="#" class="stats-card">
+              <i class="fa fa-file-text-o"></i>
+              <span class="counter">0</span>
+              <div class="title">Requests</div>
+            </a>
+          </div>
+        <!-- //Stats card -->
 
 
-</head>
-<body>
-	<input type="checkbox" id="menu" name="">
-	<div class="sidebar">
-		<div class="sidebar-brand">
-			<h2><span class="fa fa-user-o"></span>Com&Dev System </h2>
-		</div>
+    
+    </div>
+    <hr/>
 
-		<div class="sidebar-menu">
-			<ul>
-				<li>
-					<a routerLink="/dashboard-employee" class="active"><span class="fa fa-home"></span><span>Home</span></a>
-				</li>
-				<li>
-					<a routerLink="/employee-demandes" ><span class="fa fa-tasks"></span><span>Demandes</span></a>
-				</li>
+    </section>
+    
 
-
-
-
-
-				<li>
-					<a routerLink="/contact-webmaster"><span class="fa fa-user"></span><span>Contact Webmaster</span></a>
-				</li>
-			</ul>
-		</div>
-	</div>
-
-
-
-	<div class="content">
-		
-		<header>
-			<p><label for="menu"><span class="fa fa-bars"></span></label><span class="accueil">Accueil</span></p>
-
-			<!--<div class="search-wrapper">
-				<span class="fa fa-search"></span>
-				<input type="search" name="" placeholder="recherche" />
-			</div>-->
-
-			<div class="user-wrapper" id="dropdown">
-				<div>
-					<h4>Alassane</h4>
-					<small>Admin</small>
-				</div>
-				
-				<img src="./assets/logo.jpg" width="30" height="30" class="logo-admin">
-				<div class="dropdown-content">
-				<p>Mon profil</p>
-				<p>Deconnexion</p>
-				</div>
-				
-			</div>
-		</header>
-
-		<main>
-		</main>
-	</div>
-</body>
-</html>
+  
+  </main>
+  

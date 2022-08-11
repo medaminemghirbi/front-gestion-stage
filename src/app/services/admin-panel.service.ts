@@ -31,5 +31,20 @@ export class AdminPanelService {
     return this.http.get<any>(`${environment.urlBackend}`+'countall/')
   }
     
+   /////////////////////// motifs  */////////////////
+   getallreasons(){
+    return this.http.get(`${environment.urlBackend}`+'motifs/')
+  }
 
+  addreasons(data:any){
+    return this.http.post(environment.urlBackend+'motifs/' , data) ;
+  }
+
+  deletereason(id:any){
+    return this.http.delete(environment.urlBackend+'motifs/' + id )
+  }
+
+  updatereason(id:string,newdata:any){
+    return this.http.patch(environment.urlBackend+'motifs/' + id , newdata )
+  }
 }

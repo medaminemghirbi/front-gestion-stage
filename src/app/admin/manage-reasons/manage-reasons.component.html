@@ -1,0 +1,96 @@
+
+<app-admin-header></app-admin-header>
+<app-side-bar></app-side-bar>
+  
+<main role="main">
+    
+    <section class="panel important">
+        <h1>Com&Dev Abscence Reasons</h1>
+      <div style="text-align: right;">
+      <button class="addnew" data-toggle="modal" data-target="#exampleModal1">Add New Reason</button>
+    </div>
+    <br>
+      <div class="caption">Com&Dev  Abscence Reasons DETAILS</div>	
+      <div id="table">
+        <div class="header-row row">
+          <span class="cell"><a href="#">Reason<i class="fa fa-fw fa-sort"></i></a></span>
+          <span class="cell"><a href="#">update Reason</a></span>
+          <span class="cell"><a href="#">delete Reason</a></span>
+        </div>
+        <div class="row" *ngFor="let item of dataArray; index as i" >
+        <input type="radio" name="expand">
+        
+          <span class="cell primary" data-label="Vehicle">{{item.reason}}</span>
+   
+          <span class="cell" data-label="Trans">
+            <button 
+            (click)="getdata(item.reason,item.id)"
+             data-toggle="modal" data-target="#exampleModal2" class="update">Update </button>&nbsp;
+    
+          </span>
+          <span class="cell" data-label="Trans">
+  
+            <button (click)="delete(item.id , i)"   class="delete">Delete </button>
+          </span>
+        </div>
+  
+  
+      </div>
+      
+      </section>
+      
+  
+    
+    </main>
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add  New Employee</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="addreason" #f="ngForm" (ngSubmit)="addreasons (f); f.reset()" > 
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Reason  </label>
+                <input  type="text" name="reason" [(ngModel)]="datareason.reason" formControlName="reason"  class="form-control"    required>
+              </div>
+
+              <br>
+              <div class="form-group">
+                  <button class="btn btn-success" type="submit">Add Now</button>
+              </div>
+            </form>
+          </div>   
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Update   Employee</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="update" #f="ngForm" (ngSubmit)="updatereason(f); f.reset()" > 
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Reason  </label>
+                <input  type="text"  formControlName="reason" [(ngModel)]="datareason.reason"  ngModel class="form-control"    required>
+              </div>
+  
+              
+              <br>
+              <div class="form-group">
+                  <button   class="btn btn-danger" type="submit">save</button>
+              </div>
+            </form>
+          </div>   
+        </div>
+      </div>
+    </div>

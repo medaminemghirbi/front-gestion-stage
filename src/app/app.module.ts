@@ -10,11 +10,14 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { SideBarComponent } from './admin/side-bar/side-bar.component';
 import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
 import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
-import { EmployeeRequestsComponent } from './admin/employee-requests/employee-requests.component';
+import { EmployeeRequestsComponent } from './employee/employee-requests/employee-requests.component';
 import { AdminProfilComponent } from './admin/admin-profil/admin-profil.component';
 import { DashboardEmployeeComponent } from './employee/dashboard-employee/dashboard-employee.component';
 import { EmployeeDemandesComponent } from './employee/employee-demandes/employee-demandes.component';
-import { ContactWebmasterComponent } from './employee/contact-webmaster/contact-webmaster.component';
+import { EmployeeHeaderComponent } from './employee/employee-header/employee-header.component';
+import { EmployeeSidebarComponent } from './employee/employee-sidebar/employee-sidebar.component';
+import { EmployeeProfilComponent } from './employee/employee-profil/employee-profil.component';
+import { ManageReasonsComponent } from './admin/manage-reasons/manage-reasons.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +30,11 @@ import { ContactWebmasterComponent } from './employee/contact-webmaster/contact-
     AdminProfilComponent,
     DashboardEmployeeComponent,
     EmployeeDemandesComponent,
-    ContactWebmasterComponent  ],
+    EmployeeHeaderComponent,
+    EmployeeSidebarComponent,
+    EmployeeProfilComponent,
+    ManageReasonsComponent,
+      ],
   imports: [
     BrowserModule,
     AppRoutingModule,
