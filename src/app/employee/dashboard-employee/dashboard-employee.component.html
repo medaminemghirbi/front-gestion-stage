@@ -5,27 +5,34 @@
   <main role="main">
     
   <section class="panel important">
+    <div style="text-align: center;"><br>
+      <h3 style="color:rgb(2, 41, 2)" >{{employeedata.firstname}} {{employeedata.lastname}} Personal Informations</h3>
 
-    <h1>Personal Statistic</h1>
+    </div>
 
-    
+    <br>
     <div class="row">
-    
+      <div class="col s12 m4">
+        <a href="#" class="stats-card">
+          <i class="fa fa-clock-o"></i>
+          <span class="counter">{{employeedata.nbr_days}} Jours</span>
+          <div class="title">in Blanace</div>
+        </a>
+      </div>
         <!-- Stats card -->
           <div class="col s12 m4">
             <a href="#" class="stats-card">
               <i class="fa fa-user"></i>
               <span class="counter">0</span>
-              <div class="title">Accepted Requests</div>
+              <div class="title">Accepted Demandes</div>
             </a>
           </div>
-
         <!-- Stats card -->
           <div class="col s12 m4">
             <a href="#" class="stats-card">
               <i class="fa fa-file-text-o"></i>
               <span class="counter">0</span>
-              <div class="title">Requests</div>
+              <div class="title">Demandes</div>
             </a>
           </div>
         <!-- //Stats card -->

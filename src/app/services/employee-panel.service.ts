@@ -15,4 +15,13 @@ export class EmployeePanelService {
   updateadminimage (id:string,newprofile:any){
     return this.http.patch(environment.urlBackend+'updateadminimage/' + id , newprofile )
   }
+  getallreasons(){
+    return this.http.get(`${environment.urlBackend}`+'motifs/')
+  }
+  addnewdemande (data:any) {
+    return this.http.post(environment.urlBackend+'demandes/',data) ;
+  }
+  getdemandebyemployee (user_id : any) {
+    return this.http.get(`${environment.urlBackend}`+'getdemandebyemployee/' + user_id )
+  }
 }

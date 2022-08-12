@@ -2,47 +2,134 @@
 <app-employee-header></app-employee-header>
 <app-employee-sidebar></app-employee-sidebar>
   
-  <main role="main">
+<main role="main">
     
-  <section class="panel important">
-	<div class="wrapper">
-		<br>
-		<h1>management of absences and paid leave</h1>
-		<div style="text-align: right;">
-			<button class="addnew" data-toggle="modal" data-target="#exampleModal1">Add New Demande</button>
-		
+    <section class="panel important">
+      <div style="text-align: right;">
+      <button class="addnew" data-toggle="modal" data-target="#exampleModal1">Add New Demande</button>
+    </div>
+    <br>
+      <div class="caption">management of absences and paid leave</div>	
+      <div id="table">
+        <div class="header-row row" >
+		  <span class="cell primary"><a href="#">Status<i class="fa fa-fw fa-sort"></i></a></span>
+          <span class="cell"><a href="#">Start_Date<i class="fa fa-fw fa-sort"></i></a></span>
+          <span class="cell"><a href="#">End_Date<i class="fa fa-fw fa-sort"></i></a></span>
+          <span class="cell"><a href="#"> Demande Details</a></span>
+          <span class="cell"><a href="#">delete Demande</a></span>
+        </div>
+        <div class="row" *ngFor="let item of dataArrayy ;index as i" >
+        <input type="radio" name="expand">
+        
+          <span class="cell primary" data-label="Vehicle">
+			<button *ngIf="item.status==='encours' "
+			class="btn btn-warning">{{item.status}}</button>
+			<button *ngIf="item.status==='refused' "
+			class="btn btn-danger">{{item.status}}</button>
+		  <button *ngIf="item.status==='accepted' "
+			class="btn btn-success">{{item.status}}</button>
+</span>
+          <span class="cell" data-label="Exterior">{{item.start_date}}</span>
+           <span class="cell" data-label="Interior">{{item.end_date}}</span>
+           
+          <span class="cell" data-label="Trans">
+            <button 
+			(click)="getdata(item.status,item.start_date,item.end_date,item.motif.reason,item.refus_reason,item.id)"
+			data-toggle="modal" data-target="#exampleModal2" class="update">Details </button>&nbsp;
+		  </span>
+          <span class="cell" data-label="Trans">
+  
+            <button
+			*ngIf="item.status==='encours' ||item.status==='refused'"
+			 class="delete">Delete </button>
+			<button
+			*ngIf="item.status==='accepted' "
+			 readonly style="cursor: not-allowed;"
+			 class="delete">Delete </button>
+          </span>
+        </div>
+  
+  
+      </div>
+      
+      </section>
+      
+  
+    
+    </main>
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title" id="exampleModalLabel">Add  New Demande</h5>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			<div class="modal-body">
+			  <form [formGroup]="adddemande" #f="ngForm" (ngSubmit)="addnewdemande (f); f.reset()" > 
+				<div class="form-group">
+				  <label for="exampleFormControlInput1">Start Date  </label>
+				  <input  type="date" name="start_date"  formControlName="start_date"  class="form-control"    required>
+				</div>
+				<div class="form-group">
+				  <label for="exampleFormControlTextarea1">End Date  </label>        
+				  <input type="date" class="form-control" formControlName="end_date" name="end_date"    rows="3" required /> 
+				</div> 
+				<div class="form-group">
+					<label for="exampleFormControlInput1">Abscence Motif </label>
+					<select class="form-control" id="exampleFormControlSelect1"
+					 formControlName="motif_id" name="id">
+					  <option *ngFor=" let item of dataArray " 
+					  [value]="item.id"> {{item.reason}} </option>
+					</select><br>
+				</div>
+				
+				<br>
+				<div class="form-group">
+					<button class="btn btn-success" type="submit">Add Demande</button>
+				</div>
+			  </form>
+			</div>   
+		  </div>
 		</div>
-		<br>
-		<table class="c-table">
-		<thead class="c-table__header">
-		  <tr>
-			<th></th>
-			<th class="c-table__col-label"><h4>Start Date</h4> </th>
-			<th class="c-table__col-label"><h4>End Date</h4></th>
-			<th class="c-table__col-label"><h4>Motif</h4></th>
-			<th class="c-table__col-label"><h4>Status</h4></th>
-			<th class="c-table__col-label"><h4>Manage</h4></th>
-		  </tr>
-		</thead>
-		<tbody class="c-table__body">
-		  <tr>
-			<td>1</td>
-			<td class="c-table__cell"><h4>🇦🇺 Melbourne</h4></td>
-			<td class="c-table__cell"><h4>🇦🇺 Melbourne</h4></td>
-			<td class="c-table__cell"><h4>🇦🇺 Melbourne</h4></td>
-			<td class="c-table__cell"><h4>🇦🇹 Vienna</h4></td>
-			<td class="c-table__cell"><h4>🇦🇹 Vienna</h4></td>
-		  </tr>
+	  </div>
+	  <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title" id="exampleModalLabel">Demande Details</h5>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			<div class="modal-body">
+			  <form [formGroup]="getdataa"   > 
+				<div class="form-group">
+					<label for="exampleFormControlInput1">Status  </label>
+					<input  readonly style="cursor: not-allowed;"   type="text"  formControlName="status" name="status" [(ngModel)]="datareason.status" class="form-control"    >
+				  </div>
+				<div class="form-group">
+				  <label for="exampleFormControlInput1">Start Date  </label>
+				  <input  readonly style="cursor: not-allowed;"   type="text" name="start_date"  formControlName="start_date" [(ngModel)]="datareason.start_date"  class="form-control"    required>
+				</div>
+				<div class="form-group">
+				  <label for="exampleFormControlTextarea1">End Date  </label>        
+				  <input  readonly style="cursor: not-allowed;"  type="text" class="form-control" formControlName="end_date" name="end_date" [(ngModel)]="datareason.end_date"    rows="3" required /> 
+				</div> 
+				<div class="form-group">
+					<label for="exampleFormControlTextarea1">reason  </label>        
+					<input   readonly style="cursor: not-allowed;"  type="text" class="form-control" formControlName="reason" name="reason" [(ngModel)]="datareason.reason"    rows="3" required /> 
+				</div> 
+				<div class="form-group" *ngIf="datareason.refus_reason">
+					<label for="exampleFormControlTextarea1">Refus Motif  </label>        
+					<input  readonly style="cursor: not-allowed;"  type="text" class="form-control" formControlName="refus_reason" name="refus_reason" [(ngModel)]="datareason.refus_reason"    rows="3" required /> 
+				</div> 
+				
+				<br>
 		
-		</tbody>
-		</table>
-		</div>  
-		
-
-
-    </section>
-    
-
-  
-  </main>
-  
+			  </form>
+			</div>   
+		  </div>
+		</div>
+	  </div>

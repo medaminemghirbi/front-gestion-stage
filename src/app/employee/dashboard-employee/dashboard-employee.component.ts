@@ -6,8 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard-employee.component.css']
 })
 export class DashboardEmployeeComponent implements OnInit {
+  employeedata:any
+  constructor() { 
+    this.employeedata = JSON.parse( sessionStorage.getItem('employeedata') !) ;
 
-  constructor() { }
+  }
 
   ngOnInit(): void {
   }
