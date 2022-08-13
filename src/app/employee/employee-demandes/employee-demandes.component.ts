@@ -94,7 +94,26 @@ export class EmployeeDemandesComponent implements OnInit {
     console.log(this.datareason)
   }
 
+  delete(id:any  , i :number){
+    Swal.fire({
+      title: 'Do you want to save the changes?',
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Save',
+      denyButtonText: `Don't save`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.usersService.deletedemande(id).subscribe(response=>{
+          this.dataArray.splice(i,1)
+          window.location.reload()
+        })
+        Swal.fire('Saved!', '', 'success')
 
+      } else if (result.isDenied) {
+        Swal.fire('Changes are not saved', '', 'info')
+      }
+    })  
+  }
 
 
 

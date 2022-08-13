@@ -35,6 +35,7 @@ export class AdminPanelService {
    getallreasons(){
     return this.http.get(`${environment.urlBackend}`+'motifs/')
   }
+  
 
   addreasons(data:any){
     return this.http.post(environment.urlBackend+'motifs/' , data) ;
@@ -46,5 +47,12 @@ export class AdminPanelService {
 
   updatereason(id:string,newdata:any){
     return this.http.patch(environment.urlBackend+'motifs/' + id , newdata )
+  }
+   /////////////////////// demandes  */////////////////
+   getalldemandes(){
+    return this.http.get(`${environment.urlBackend}`+'demandes/')
+  }
+  deletedemande(id:any) {
+    return this.http.delete(environment.urlBackend+'demandes/' + id )
   }
 }

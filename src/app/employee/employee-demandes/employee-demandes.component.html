@@ -12,6 +12,7 @@
       <div class="caption">management of absences and paid leave</div>	
       <div id="table">
         <div class="header-row row" >
+
 		  <span class="cell primary"><a href="#">Status<i class="fa fa-fw fa-sort"></i></a></span>
           <span class="cell"><a href="#">Start_Date<i class="fa fa-fw fa-sort"></i></a></span>
           <span class="cell"><a href="#">End_Date<i class="fa fa-fw fa-sort"></i></a></span>
@@ -41,6 +42,8 @@
   
             <button
 			*ngIf="item.status==='encours' ||item.status==='refused'"
+		
+			 (click)="delete(item.id , i)"
 			 class="delete">Delete </button>
 			<button
 			*ngIf="item.status==='accepted' "

@@ -21,6 +21,9 @@ export class EmployeePanelService {
   addnewdemande (data:any) {
     return this.http.post(environment.urlBackend+'demandes/',data) ;
   }
+  deletedemande(id:any) {
+    return this.http.delete(environment.urlBackend+'demandes/' + id )
+  }
   getdemandebyemployee (user_id : any) {
     return this.http.get(`${environment.urlBackend}`+'getdemandebyemployee/' + user_id )
   }

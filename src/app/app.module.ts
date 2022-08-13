@@ -10,7 +10,6 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { SideBarComponent } from './admin/side-bar/side-bar.component';
 import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
 import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
-import { EmployeeRequestsComponent } from './employee/employee-requests/employee-requests.component';
 import { AdminProfilComponent } from './admin/admin-profil/admin-profil.component';
 import { DashboardEmployeeComponent } from './employee/dashboard-employee/dashboard-employee.component';
 import { EmployeeDemandesComponent } from './employee/employee-demandes/employee-demandes.component';
@@ -18,6 +17,7 @@ import { EmployeeHeaderComponent } from './employee/employee-header/employee-hea
 import { EmployeeSidebarComponent } from './employee/employee-sidebar/employee-sidebar.component';
 import { EmployeeProfilComponent } from './employee/employee-profil/employee-profil.component';
 import { ManageReasonsComponent } from './admin/manage-reasons/manage-reasons.component';
+import { EmployeeRequestsComponent } from './admin/employee-requests/employee-requests.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +26,6 @@ import { ManageReasonsComponent } from './admin/manage-reasons/manage-reasons.co
     SideBarComponent,
     AdminHeaderComponent,
     ManageUsersComponent,
-    EmployeeRequestsComponent,
     AdminProfilComponent,
     DashboardEmployeeComponent,
     EmployeeDemandesComponent,
@@ -34,6 +33,7 @@ import { ManageReasonsComponent } from './admin/manage-reasons/manage-reasons.co
     EmployeeSidebarComponent,
     EmployeeProfilComponent,
     ManageReasonsComponent,
+    EmployeeRequestsComponent,
       ],
   imports: [
     BrowserModule,

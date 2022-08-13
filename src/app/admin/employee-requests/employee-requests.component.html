@@ -1,0 +1,60 @@
+
+<app-admin-header></app-admin-header>
+<app-side-bar></app-side-bar>
+  
+<main role="main">
+    
+    <section class="panel important">
+
+    <br>
+      <div class="caption">Com&Dev  Abscence Demandes DETAILS</div>	
+      <div id="table">
+        <div class="header-row row">
+          <span class="cell primary"><a href="#">Employee<i class="fa fa-fw fa-sort"></i></a></span>
+          <span class="cell"><a href="#">Demande_Status<i class="fa fa-fw fa-sort"></i></a></span>
+          <span class="cell"><a href="#">Start_date<i class="fa fa-fw fa-sort"></i></a></span>
+          <span class="cell"><a href="#">End_date<i class="fa fa-fw fa-sort"></i></a></span>
+          <span class="cell"><a href="#">Employee_Balance<i class="fa fa-fw fa-sort"></i></a></span>
+
+          <span class="cell"><a href="#">Demande_Reason<i class="fa fa-fw fa-sort"></i></a></span>
+          <span class="cell"><a href="#">Refus_Reason<i class="fa fa-fw fa-sort"></i></a></span>
+
+          <span class="cell"><a href="#">Action </a></span>
+    
+        </div>
+        <div class="row" *ngFor="let item of dataArray; index as i" >
+        <input type="radio" name="expand">
+        <span class="cell primary" data-label="Vehicle">{{item.user.lastname}} {{item.user.firstname}}</span>
+
+        <span class="cell primary" data-label="Vehicle">
+          <button *ngIf="item.status==='encours' "
+          class="btn btn-warning">{{item.status}}</button>
+          <button *ngIf="item.status==='refused' "
+          class="btn btn-danger">{{item.status}}</button>
+          <button *ngIf="item.status==='accepted' "
+          class="btn btn-success">{{item.status}}</button>
+    </span>
+          <span class="cell primary" data-label="Vehicle">{{item.start_date}}</span>
+          <span class="cell primary" data-label="Vehicle">{{item.end_date}}</span>
+          <span class="cell primary" data-label="Vehicle">{{item.user.nbr_days}} Days</span>     
+
+          <span class="cell primary" data-label="Vehicle">{{item.motif.reason}}</span>
+          <span class="cell primary" data-label="Vehicle">{{item.refus_reason}}</span>
+          <span class="cell" data-label="Trans">
+            <button 
+      
+             data-toggle="modal" data-target="#exampleModal2" class="update">Update </button>&nbsp;
+    
+          </span>
+
+        </div>
+  
+  
+      </div>
+      
+      </section>
+      
+  
+    
+    </main>
+
