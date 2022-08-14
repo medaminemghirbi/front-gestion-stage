@@ -55,4 +55,8 @@ export class AdminPanelService {
   deletedemande(id:any) {
     return this.http.delete(environment.urlBackend+'demandes/' + id )
   }
+  updatedemande (id:string,newdata:any) {
+    return this.http.patch(environment.urlBackend+'demandes/' + id , newdata )
+  }
+  
 }
