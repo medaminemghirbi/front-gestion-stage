@@ -16,7 +16,7 @@
           <span class="cell"><a href="#">End_date<i class="fa fa-fw fa-sort"></i></a></span>
           <span class="cell"><a href="#">Days nbr<i class="fa fa-fw fa-sort"></i></a></span>
 
-          <span class="cell"><a href="#">Employee_Balance<i class="fa fa-fw fa-sort"></i></a></span>
+          <span class="cell"><a href="#">Employee_in_Balance<i class="fa fa-fw fa-sort"></i></a></span>
 
           <span class="cell"><a href="#">Demande_Reason<i class="fa fa-fw fa-sort"></i></a></span>
           <span class="cell"><a href="#">Refus_Reason<i class="fa fa-fw fa-sort"></i></a></span>
@@ -41,7 +41,7 @@
           <span class="cell primary" data-label="Vehicle">{{item.days}} days</span>
 
           <span class="cell primary" data-label="Vehicle">
-            <button *ngIf="item.user.nbr_days>=0 "
+            <button *ngIf="item.user.nbr_days>0 "
             class="btn btn-success">{{item.user.nbr_days}} </button>
        
             <button *ngIf="item.user.nbr_days<=0 "
