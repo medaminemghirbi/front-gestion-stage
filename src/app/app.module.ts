@@ -18,6 +18,10 @@ import { EmployeeSidebarComponent } from './employee/employee-sidebar/employee-s
 import { EmployeeProfilComponent } from './employee/employee-profil/employee-profil.component';
 import { ManageReasonsComponent } from './admin/manage-reasons/manage-reasons.component';
 import { EmployeeRequestsComponent } from './admin/employee-requests/employee-requests.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +38,8 @@ import { EmployeeRequestsComponent } from './admin/employee-requests/employee-re
     EmployeeProfilComponent,
     ManageReasonsComponent,
     EmployeeRequestsComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
       ],
   imports: [
     BrowserModule,
@@ -42,7 +48,9 @@ import { EmployeeRequestsComponent } from './admin/employee-requests/employee-re
     FormsModule,
     ReactiveFormsModule,
     ChartsModule,
-    MDBBootstrapModule
+    MDBBootstrapModule,
+    NgxPaginationModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

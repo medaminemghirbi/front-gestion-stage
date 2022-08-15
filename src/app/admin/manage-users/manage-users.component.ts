@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/model/user.model';
 import { AdminPanelService } from 'src/app/services/admin-panel.service';
 import Swal from 'sweetalert2';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @Component({
   selector: 'app-manage-users',
   templateUrl: './manage-users.component.html',
@@ -24,6 +24,7 @@ export class ManageUsersComponent implements OnInit {
     password:'',
     role:''
   }
+  searchedKeyword!:string;
   submitted:any
   dataemp={
     id : '',

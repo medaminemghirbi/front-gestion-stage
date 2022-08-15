@@ -27,4 +27,16 @@ export class EmployeePanelService {
   getdemandebyemployee (user_id : any) {
     return this.http.get(`${environment.urlBackend}`+'getdemandebyemployee/' + user_id )
   }
+
+  getemployeedemandes(user_id:any){
+    return this.http.get(`${environment.urlBackend}`+'get_count_of_demandes_by_employee/' + user_id )
+  }
+  //**send email reset +reset password section  */
+  sendresetlink (email:any)  {
+    return this.http.post(environment.urlBackend+'password_resets/',email) ;
+  }
+  resetpassword(token:string,email:any){
+    return this.http.put(environment.urlBackend+'password_resets/'+token,email);
+  }
+
 }

@@ -14,6 +14,8 @@ export class EmployeeRequestsComponent implements OnInit {
   messageErr="" ;
   dataArray:any = []
   update:any;
+  p:number = 1 ;
+  itemsPerPage = 10;
   datademande = {
     id : '' ,
     status  : '',
@@ -26,12 +28,14 @@ export class EmployeeRequestsComponent implements OnInit {
       refus_reason: new FormControl(''),
     });
   }
+  searchedKeyword!:string;
 
   ngOnInit(): void {
     this.usersService.getalldemandes().subscribe(data=>{
       // debugger
       
       this.dataArray=data 
+      this.p =  0
       
       console.log(this.dataArray), 
       (err:HttpErrorResponse)=>{

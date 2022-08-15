@@ -10,6 +10,8 @@ import { IndexComponent } from './index/index.component';
 import { GuardGuard } from './services/guard.guard';
 import { EmployeeProfilComponent } from './employee/employee-profil/employee-profil.component';
 import { ManageReasonsComponent } from './admin/manage-reasons/manage-reasons.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 const routes: Routes = [
   {path:'',component:IndexComponent},
@@ -21,6 +23,8 @@ const routes: Routes = [
   {path:'employee-profil',component:EmployeeProfilComponent},
   {path:'dashboard-employee',component:DashboardEmployeeComponent},
   {path:'employee-demandes',component:EmployeeDemandesComponent},
+  {path:'reset/:token', component: ResetPasswordComponent},
+  {path:'forgot-password',component:ForgotPasswordComponent},
 ];
 
 @NgModule({

@@ -132,30 +132,42 @@ export class EmployeeDemandesComponent implements OnInit {
   let data=f.value   
   
   console.log(formData)
-  this.usersService.addnewdemande(formData).subscribe( ()=>{
+  debugger
+  if(this.adddemande.value.start_date<=this.adddemande.value.end_date){
+    debugger
+    this.usersService.addnewdemande(formData).subscribe( ()=>{
 
-    this.route.navigate(['/employee-demandes'])   ;
-
-      this.submitted = true ;  
+      this.route.navigate(['/employee-demandes'])   ;
+  
+        this.submitted = true ;  
+        Swal.fire({
+          icon: 'success',
+          title: 'success...',
+          text: 'Saved !' ,
+       
+            showConfirmButton: true,
+            timer: 1500
+        })  
+        window.location.reload();
+    },(err:HttpErrorResponse)=>{
+  
       Swal.fire({
-        icon: 'success',
-        title: 'success...',
-        text: 'Saved !' ,
-     
-          showConfirmButton: true,
-          timer: 1500
-      })  
-      window.location.reload();
-  },(err:HttpErrorResponse)=>{
+        icon: 'error',
+        title: 'Oops...',
+        text: 'error server side !' ,
+        footer: '<a href="">Why do I have this issue?</a>'
+      })
+        
+    }) ;  
+  }else{
 
-     Swal.fire({
+    Swal.fire({
       icon: 'error',
       title: 'Oops...',
-      text: 'champs required or not valid !' ,
-      position: 'top-end',
-        showConfirmButton: false,
-        timer: 1500
-    })    
-  }) ;  
+      text: 'start date must be before end date!' ,
+      footer: '<a href="">Why do I have this issue?</a>'
+    })
+  }
+
 }
 }

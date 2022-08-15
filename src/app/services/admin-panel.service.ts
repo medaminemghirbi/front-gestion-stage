@@ -50,7 +50,7 @@ export class AdminPanelService {
   }
    /////////////////////// demandes  */////////////////
    getalldemandes(){
-    return this.http.get(`${environment.urlBackend}`+'demandes/')
+    return this.http.get(`${environment.urlBackend}`+'demandes/?p=${10}')
   }
   deletedemande(id:any) {
     return this.http.delete(environment.urlBackend+'demandes/' + id )

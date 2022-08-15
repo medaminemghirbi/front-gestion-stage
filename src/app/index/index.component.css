@@ -13,8 +13,8 @@ body {
 }
 
 .container {
-    height: 400px;
-    width: 650px;
+    height: 600px;
+    width: 850px;
     box-shadow: 0px 30px 40px black;
     display: flex;
     border-radius: 10px;

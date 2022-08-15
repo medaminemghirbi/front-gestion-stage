@@ -31,7 +31,7 @@
                 <br>
                 <input type="password"  class="form-control"  id="txt" placeholder="Password"  formControlName="password"  [(ngModel)]="user.password" ngModel required>
             </div>
-            <a class="fp" href="index.html">Forgot Password?</a>
+            <a class="fp" routerLink="/forgot-password">Forgot Password?</a>
             <br>
             <button type="button" (click)="login()" class="btn">Login</button>
         </div>

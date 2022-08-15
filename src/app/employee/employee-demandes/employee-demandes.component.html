@@ -124,7 +124,7 @@
 					<label for="exampleFormControlTextarea1">reason  </label>        
 					<input   readonly style="cursor: not-allowed;"  type="text" class="form-control" formControlName="reason" name="reason" [(ngModel)]="datareason.reason"    rows="3" required /> 
 				</div> 
-				<div class="form-group" *ngIf="datareason.refus_reason">
+				<div class="form-group" *ngIf="datareason.refus_reason && datareason.refus_reason !== 'null' ">
 					<label for="exampleFormControlTextarea1">Refus Motif  </label>        
 					<input  readonly style="cursor: not-allowed;"  type="text" class="form-control" formControlName="refus_reason" name="refus_reason" [(ngModel)]="datareason.refus_reason"    rows="3" required /> 
 				</div> 

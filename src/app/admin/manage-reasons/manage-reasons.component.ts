@@ -43,8 +43,7 @@ export class ManageReasonsComponent implements OnInit {
 
   ngOnInit(): void {
     this.usersService.getallreasons().subscribe(data=>{
-      // debugger
-      
+   
       this.dataArray=data 
       console.log(this.dataArray)
       this.counter = this.dataArray.length, (err:HttpErrorResponse)=>{

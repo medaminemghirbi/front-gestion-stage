@@ -22,17 +22,31 @@
         <!-- Stats card -->
           <div class="col s12 m4">
             <a href="#" class="stats-card">
-              <i class="fa fa-user"></i>
-              <span class="counter">0</span>
+              <i class="fa fa-file-text-o"></i>
+              <span class="counter">{{this.dataArray.accepted}}</span>
               <div class="title">Accepted Demandes</div>
+            </a>
+          </div>
+          <div class="col s12 m4">
+            <a href="#" class="stats-card">
+              <i class="fa fa-file-text-o"></i>
+              <span class="counter">{{this.dataArray.refused}}</span>
+              <div class="title">Refused Demandes</div>
+            </a>
+          </div>
+          <div class="col s12 m4">
+            <a href="#" class="stats-card">
+              <i class="fa fa-file-text-o"></i>
+              <span class="counter">{{this.dataArray.encours}}</span>
+              <div class="title">Encours Demandes</div>
             </a>
           </div>
         <!-- Stats card -->
           <div class="col s12 m4">
             <a href="#" class="stats-card">
               <i class="fa fa-file-text-o"></i>
-              <span class="counter">0</span>
-              <div class="title">Demandes</div>
+              <span class="counter">{{this.dataArray.alldemande}}</span>
+              <div class="title">All Demandes</div>
             </a>
           </div>
         <!-- //Stats card -->

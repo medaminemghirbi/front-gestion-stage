@@ -13,7 +13,7 @@
     
         <!-- Stats card -->
           <div class="col s12 m4">
-            <a href="#" class="stats-card">
+            <a routerLink="/dashboard-RH" class="stats-card">
               <i class="fa fa-user"></i>
               <span class="counter">{{this.dataArray.data[0]}}</span>
               <div class="title">Employees</div>
@@ -22,10 +22,24 @@
 
         <!-- Stats card -->
           <div class="col s12 m4">
-            <a href="#" class="stats-card">
+            <a routerLink="/dashboard-RH" class="stats-card">
               <i class="fa fa-file-text-o"></i>
               <span class="counter">{{this.dataArray.data[1]}}</span>
-              <div class="title">Requests</div>
+              <div class="title">All Demandes</div>
+            </a>
+          </div>
+          <div class="col s12 m4">
+            <a routerLink="/dashboard-RH" class="stats-card">
+              <i class="fa fa-file-text-o"></i>
+              <span class="counter">{{this.dataArray.data[2]}}</span>
+              <div class="title">Accepted Demandes</div>
+            </a>
+          </div>
+          <div class="col s12 m4">
+            <a routerLink="/dashboard-RH" class="stats-card">
+              <i class="fa fa-file-text-o"></i>
+              <span class="counter">{{this.dataArray.data[3]}}</span>
+              <div class="title">Refused Demandes</div>
             </a>
           </div>
         <!-- //Stats card -->

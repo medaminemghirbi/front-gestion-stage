@@ -8,6 +8,13 @@
     <div style="text-align: right;">
     <button class="addnew" data-toggle="modal" data-target="#exampleModal1">Add New Employee</button>
   </div>
+  <form
+  class="card-header py-3" >
+  <div class="input-group">
+      <input type="text" name="role" class="form-control" [(ngModel)]="searchedKeyword"  placeholder="Search for..." >
+    
+  </div>
+  </form>
   <br>
     <div class="caption">Com&Dev  Employees DETAILS</div>	
     <div id="table">
@@ -21,15 +28,30 @@
         <span class="cell"><a href="#">update employee</a></span>
         <span class="cell"><a href="#">delete employee</a></span>
       </div>
-      <div class="row" *ngFor="let item of dataArray; index as i">
+      <div class="row" *ngFor="let item of dataArray| filter:searchedKeyword ; index as i">
       <input type="radio" name="expand">
       
       <span class="cell primary" data-label="Vehicle"><img src="{{item.user_image_url}}"  height="65" width="90"></span>
-        <span class="cell primary" data-label="Vehicle">{{item.firstname}}</span>
-        <span class="cell" data-label="Exterior">{{item.lastname}}</span>
-         <span class="cell" data-label="Interior">{{item.adress}}</span>
+        <span class="cell primary" data-label="Vehicle">
+          <p *ngIf="item.firstname && item.firstname!== 'null' ">
+            {{item.firstname}}
+          </p>
+        </span>
+        <span class="cell" data-label="Exterior">
+          <p *ngIf="item.lastname && item.lastname!== 'null' ">
+            {{item.lastname}}
+          </p>      
+          </span>
+         <span class="cell" data-label="Interior">
+          <p *ngIf="item.adress && item.adress!== 'null' ">
+            {{item.adress}}
+          </p></span>
          
-        <span class="cell" data-label="Trans">{{item.email}}</span>
+        <span class="cell" data-label="Trans">
+          <p *ngIf="item.email && item.email!== 'null' ">
+            {{item.email}}
+          </p>
+          </span>
         <span class="cell" data-label="Trans">
           <button *ngIf="item.email_confirmed===null ||item.email_confirmed===false" class="btn btn-outline-danger btn-lg" > false </button>
           <button *ngIf="item.email_confirmed===true "class="btn btn-outline-success btn-lg" > {{item.email_confirmed}} </button>
