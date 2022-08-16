@@ -1,42 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link href="https://fonts.googleapis.com/css2?family=Niconne&display=swap" rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Niconne&display=swap" rel="stylesheet">
-
-    <title>Login Form</title>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário Animado</title>
 </head>
-
-<body >
-    <form [formGroup]="registerForm" >
-    <div class="container">
-        <div class="image">
-            <h1>Welcome To <span>COM&DEV</span></h1>
+<body>
+  
+  <section class="form-section">
+    <div class="form-wrapper">
+      <form [formGroup]="registerForm">
+        <div class="photo-info">
+          <img src="https://www.com-and-dev.com/wp-content/uploads/2018/08/logo1-1.png" alt="">
+          <h3>Welcome to Com&Dev </h3>
         </div>
-        <div class="content">
-            <h1>Login</h1>
-            <div class="form-group">
-                <label for="">UserName</label>
-                <br>
-                <input type="text" class="form-control"  name="email"  formControlName="email" [(ngModel)]="user.email" id="txt" aria-describedby="helpId" placeholder="UserName">
-
-            </div>
-            <div class="form-group">
-                <label for="">Password</label>
-                <br>
-                <input type="password"  class="form-control"  id="txt" placeholder="Password"  formControlName="password"  [(ngModel)]="user.password" ngModel required>
-            </div>
-            <a class="fp" routerLink="/forgot-password">Forgot Password?</a>
-            <br>
-            <button type="button" (click)="login()" class="btn">Login</button>
+        <div class="input-block email">
+          <input 
+          type="text"
+            id="login-email"
+            name="email"  formControlName="email" [(ngModel)]="user.email" id="txt" aria-describedby="helpId" placeholder="UserName"
+          />
         </div>
+        <div class="input-block password">
+          <input
+            type="password"
+            id="login-email"
+        
+            placeholder="Password"  formControlName="password" 
+            [(ngModel)]="user.password" ngModel required
+          />
+        </div>
+        <p>forgot your  account? <a routerLink="/forgot-password" class="span">go  here.</a></p>
+        <button type="button" (click)="login()" class="btn-login">Sign In</button>
+      </form>
     </div>
-</form>
-</body>
+  </section>
 
+  <ul class="squares"></ul>
+   
+  <script >
+    const btnLogin = document.querySelector('.btn-login');
+const form = document.querySelector("form");
+
+btnLogin.addEventListener("click", event => {
+  event.preventDefault();
+
+  const fields = [...document.querySelectorAll(".input-block input")]
+
+  fields.forEach(field => {
+    if (field.value === "") form.classList.add("validate-error")
+  });
+
+  const formError = document.querySelector(".validate-error");
+  if (formError) {
+    formError.addEventListener("animationend", (event) => {
+      if (event.animationName === "nono") {
+        formError.classList.remove("validate-error");
+      }
+    });
+  } else {
+    form.classList.add("form-hide");
+  }
+});
+
+form.addEventListener("animationstart", event => {
+  if (event.animationName === "down") {
+    document.querySelector("body").style.overflow = "hidden"
+  }
+})
+
+form.addEventListener("animationend", () => {
+  if (event.animationName === "down")
+    form.style.display = "none";
+    document.querySelector("body").style.overflow = "none"
+
+});
+
+// Background squares
+const ulSquares = document.querySelector("ul.squares")
+
+for (let i = 0; i < 11; i++) {
+  const li = document.createElement("li");
+
+  const random = (min, max) => Math.random() * (max - min) + min
+
+  const size = Math.floor(random(10, 120));
+  const position = random(1, 99);
+  const delay = random(5, 0.1);
+  const duration = random(24, 12);
+
+  li.style.width = `${size}px`
+  li.style.height = `${size}px`
+  li.style.bottom = `-${size}px`
+
+  li.style.left = `${position}%`;
+
+  li.style.animationDelay = `${delay}s`
+  li.style.animationDuration = `${duration}s`
+
+    opacity: 0;
+    li.style.animationTimingFunction = `cubic-bezier(${Math.random()}, ${Math.random()}, ${Math.random()}, ${Math.random()}, ${Math.random()}, )`
+
+  ulSquares.appendChild(li);
+
+}
+  </script>
+</body>
 </html>

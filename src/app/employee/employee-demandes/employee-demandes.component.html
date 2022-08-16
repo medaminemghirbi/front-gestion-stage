@@ -35,7 +35,7 @@
            
           <span class="cell" data-label="Trans">
             <button 
-			(click)="getdata(item.status,item.start_date,item.end_date,item.motif.reason,item.refus_reason,item.id)"
+			(click)="getdata(item.status,item.start_date,item.end_date,item.motif.reason,item.refus_reason,item.description,item.id)"
 			data-toggle="modal" data-target="#exampleModal2" class="update">Details </button>&nbsp;
 		  </span>
           <span class="cell" data-label="Trans">
@@ -85,9 +85,13 @@
 					 formControlName="motif_id" name="id">
 					  <option *ngFor=" let item of dataArray " 
 					  [value]="item.id"> {{item.reason}} </option>
-					</select><br>
+					</select>
 				</div>
-				
+				<div class="form-group">
+					<label for="exampleFormControlTextarea1">Abscence Description  </label>        
+					<textarea   rows="4" cols="50" class="form-control" formControlName="description" name="description"    rows="3" required >
+					</textarea> 
+				  </div> 
 				<br>
 				<div class="form-group">
 					<button class="btn btn-success" type="submit">Add Demande</button>
@@ -128,7 +132,11 @@
 					<label for="exampleFormControlTextarea1">Refus Motif  </label>        
 					<input  readonly style="cursor: not-allowed;"  type="text" class="form-control" formControlName="refus_reason" name="refus_reason" [(ngModel)]="datareason.refus_reason"    rows="3" required /> 
 				</div> 
-				
+				<div class="form-group" >
+					<label for="exampleFormControlTextarea1">Abscence Description  </label>        
+					<textarea   rows="4" cols="50"  readonly style="cursor: not-allowed;"  type="text" class="form-control" formControlName="description" name="description" [(ngModel)]="datareason.description"    rows="3" required > 
+						</textarea>
+				</div> 
 				<br>
 		
 			  </form>

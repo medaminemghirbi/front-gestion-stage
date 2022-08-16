@@ -46,6 +46,6 @@ export class ResetPasswordComponent implements OnInit {
      
   }) ;
   Swal.fire('Password Updated Avec Succes !', '', 'success')
-  this.route.navigate(['/login']);
+  this.route.navigate(['']);
   }
 }

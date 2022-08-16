@@ -1,4 +1,5 @@
 
+
 <app-admin-header></app-admin-header>
 <app-side-bar></app-side-bar>
   
@@ -6,72 +7,71 @@
     
   <section class="panel important">
     <div style="text-align: right;">
-    <button class="addnew" data-toggle="modal" data-target="#exampleModal1">Add New Employee</button>
-  </div>
-  <form
-  class="card-header py-3" >
-  <div class="input-group">
-      <input type="text" name="role" class="form-control" [(ngModel)]="searchedKeyword"  placeholder="Search for..." >
-    
-  </div>
-  </form>
-  <br>
-    <div class="caption">Com&Dev  Employees DETAILS</div>	
-    <div id="table">
-      <div class="header-row row">
-        <span class="cell"><a href="#">Picture<i class="fa fa-fw fa-sort"></i></a></span>
-        <span class="cell"><a href="#">FirstName<i class="fa fa-fw fa-sort"></i></a></span>
-        <span class="cell primary"><a href="#">LastName<i class="fa fa-fw fa-sort"></i></a></span>
-        <span class="cell"><a href="#">Adress<i class="fa fa-fw fa-sort"></i></a></span>
-        <span class="cell"><a href="#">Email<i class="fa fa-fw fa-sort"></i></a></span>
-        <span class="cell"><a href="#">Account Comfirmed<i class="fa fa-fw fa-sort"></i></a></span>
-        <span class="cell"><a href="#">update employee</a></span>
-        <span class="cell"><a href="#">delete employee</a></span>
+        <button class="addnew" data-toggle="modal" data-target="#exampleModal1">Add New Employee</button>
       </div>
-      <div class="row" *ngFor="let item of dataArray| filter:searchedKeyword ; index as i">
-      <input type="radio" name="expand">
+          <form
+          class="card-header py-3" >
+          <div class="input-group">
+              <input type="text" name="role" class="form-control" [(ngModel)]="searchedKeyword"  placeholder="Search for..." >
+            
+          </div>
+          </form>
+    <table class="dataTable">
+        <thead>
+            <tr>
+                <th><h6>Picture</h6></th>
+                <th><h6>First Name</h6></th>
+                <th><h6>Last Name</h6></th>
+                <th><h6>Adress</h6></th>
+                <th><h6>Email </h6></th>
+                <th><h6>Account Confirmed</h6></th>
+            
+                <th><h6>update Employee</h6></th>
+                <th><h6>Delete Employee</h6></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of dataArray| filter:searchedKeyword ; index as i">
+                <td>
+                    <img src="{{item.user_image_url}}"  height="65" width="90">
+                </td>
+                <td>          
+                    <h6 *ngIf="item.firstname && item.firstname!== 'null' ">{{item.firstname}}</h6>
+                </td>
+                <td>          
+                    <h6 *ngIf="item.lastname && item.lastname!== 'null' ">{{item.lastname}}</h6>
+                </td>
+
+                <td>
+                    <h6 *ngIf="item.adress && item.adress!== 'null' ">{{item.adress}}</h6>
+                </td>
+                <td>
+                    <h6 *ngIf="item.email && item.email !== 'null' ">{{item.email}}</h6>
+    
+                </td>
+                <td>
+                    <button *ngIf="item.email_confirmed===null ||item.email_confirmed===false" class="btn btn-outline-danger btn-lg" > false </button>
+                    <button *ngIf="item.email_confirmed===true "class="btn btn-outline-success btn-lg" > {{item.email_confirmed}} </button>
+
+                </td>
+                <td>
+                    <button (click)="getdata(item.email,item.firstname,item.lastname,item.password,item.adress,item.image_url,item.id)"
+                    data-toggle="modal" data-target="#exampleModal2" class="update">Update </button>&nbsp;
+                </td>
+                <td>
+                  <h6>
+
+                    <button   (click)="deleteemployee(item.id , i)" class="delete">Delete </button>
+                  </h6>
+                    
+                </td>
+               
       
-      <span class="cell primary" data-label="Vehicle"><img src="{{item.user_image_url}}"  height="65" width="90"></span>
-        <span class="cell primary" data-label="Vehicle">
-          <p *ngIf="item.firstname && item.firstname!== 'null' ">
-            {{item.firstname}}
-          </p>
-        </span>
-        <span class="cell" data-label="Exterior">
-          <p *ngIf="item.lastname && item.lastname!== 'null' ">
-            {{item.lastname}}
-          </p>      
-          </span>
-         <span class="cell" data-label="Interior">
-          <p *ngIf="item.adress && item.adress!== 'null' ">
-            {{item.adress}}
-          </p></span>
-         
-        <span class="cell" data-label="Trans">
-          <p *ngIf="item.email && item.email!== 'null' ">
-            {{item.email}}
-          </p>
-          </span>
-        <span class="cell" data-label="Trans">
-          <button *ngIf="item.email_confirmed===null ||item.email_confirmed===false" class="btn btn-outline-danger btn-lg" > false </button>
-          <button *ngIf="item.email_confirmed===true "class="btn btn-outline-success btn-lg" > {{item.email_confirmed}} </button>
+            </tr>
+     
+        </tbody>
+    </table>
 
-
-        </span>
-        <span class="cell" data-label="Trans">
-          <button (click)="getdata(item.email,item.firstname,item.lastname,item.password,item.adress,item.image_url,item.id)"
-           data-toggle="modal" data-target="#exampleModal2" class="update">Update </button>&nbsp;
-  
-        </span>
-        <span class="cell" data-label="Trans">
-
-          <button   (click)="deleteemployee(item.id , i)" class="delete">Delete </button>
-        </span>
-      </div>
-
-
-    </div>
-    
     </section>
     
 

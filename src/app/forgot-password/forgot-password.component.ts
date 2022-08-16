@@ -36,7 +36,7 @@ export class ForgotPasswordComponent implements OnInit {
     
      // console.log(formData)
      
-      Swal.fire('Reset Link Sent Avec Succes!', '', 'success')
+      Swal.fire('Reset Link Sent Avec Succes! check your Email', '', 'success')
 
 
   },(err:HttpErrorResponse)=>{

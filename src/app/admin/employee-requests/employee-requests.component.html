@@ -1,139 +1,151 @@
 
+
 <app-admin-header></app-admin-header>
 <app-side-bar></app-side-bar>
   
-<main role="main">
+  <main role="main">
     
-    <section class="panel important">
-      <form
-      class="card-header py-3" >
-      <div class="input-group">
-          <input type="text" name="role" class="form-control" [(ngModel)]="searchedKeyword"  placeholder="Search for..." >
-        
-      </div>
-      </form>
-    <br>
-      <div class="caption">Com&Dev  Abscence Demandes DETAILS</div>	
-      <div id="table">
-        <div class="header-row row">
-          <span class="cell primary"><a href="#">Employee<i class="fa fa-fw fa-sort"></i></a></span>
-          <span class="cell primary"><a href="#">Email<i class="fa fa-fw fa-sort"></i></a></span>
-
-          <span class="cell"><a href="#">Demande_Status<i class="fa fa-fw fa-sort"></i></a></span>
-          <span class="cell"><a href="#">Start_date<i class="fa fa-fw fa-sort"></i></a></span>
-          <span class="cell"><a href="#">End_date<i class="fa fa-fw fa-sort"></i></a></span>
-          <span class="cell"><a href="#">Days nbr<i class="fa fa-fw fa-sort"></i></a></span>
-
-          <span class="cell"><a href="#">Employee_in_Balance<i class="fa fa-fw fa-sort"></i></a></span>
-
-          <span class="cell"><a href="#">Demande_Reason<i class="fa fa-fw fa-sort"></i></a></span>
-          <span class="cell"><a href="#">Refus_Reason<i class="fa fa-fw fa-sort"></i></a></span>
-
-          <span class="cell"><a href="#">Action </a></span>
+  <section class="panel important">
+          <div style="text-align: center;"><h6>Com&Dev  Abscence Demandes DETAILS</h6></div>	
+          <form
+          class="card-header py-3" >
+          <div class="input-group">
+              <input type="text" name="role" class="form-control" [(ngModel)]="searchedKeyword"  placeholder="Search for..." >
+            
+          </div>
+          </form>
+    <table class="dataTable">
+        <thead>
+            <tr>
+                <th><h6>Employee</h6></th>
+                <th><h6>Email</h6></th>
+                <th><h6>Status</h6></th>
+                <th><h6>demande Start_date</h6></th>
+                <th><h6>demande Ended_date</h6> </th>
+                <th><h6>Days_nbr</h6></th>
+                <th><h6>Employee_in_Balance</h6></th>
+                <th><h6>Reason</h6></th>
+                <th><h6>description</h6></th>
+                <th><h6>Refus_Reason</h6></th>
+                <th><h6>Action</h6></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of dataArray|paginate: { 
+                itemsPerPage: itemsPerPage,
+                 currentPage: p 
+                }| filter:searchedKeyword  ; index as i">
+                <td>
+                    <h6 *ngIf="item.user.lastname|| item.user.fisrtname && item.user.lastname ||item.user.firstname !== 'null' ">{{item.user.lastname}} {{item.user.firstname}}</h6>
+                </td>
+                <td>
+                    <h6 *ngIf="item.user.email && item.user.email !== 'null' ">{{item.user.email}}</h6>
+                </td>
+                <td>
     
-        </div>
-        <div class="row" *ngFor="let item of dataArray|paginate: { 
-          itemsPerPage: itemsPerPage,
-           currentPage: p 
-          }| filter:searchedKeyword  ; index as i" >
-        <input type="radio" name="expand">
-        <span class="cell primary" data-label="Employee">
-          <p *ngIf="item.user.lastname|| item.user.fisrtname && item.user.lastname ||item.user.firstname !== 'null' ">{{item.user.lastname}} {{item.user.firstname}}</p></span>
-
-        <span class="cell primary" data-label="Employee">
-          <p *ngIf="item.user.email && item.user.email !== 'null' ">{{item.user.email}}</p></span>
-
-
-        <span class="cell primary" data-label="Employee">
-          <button *ngIf="item.status==='encours' "
-          class="btn btn-warning">{{item.status}}</button>
-          <button *ngIf="item.status==='refused' "
-          class="btn btn-danger">{{item.status}}</button>
-          <button *ngIf="item.status==='accepted' "
-          class="btn btn-success">{{item.status}}</button>
-    </span>
-          <span class="cell primary" data-label="Employee">
-            <p *ngIf="item.start_date && item.start_date !== 'null' ">{{item.start_date}}</p>
-          </span>
-          <span class="cell primary" data-label="Employee">
-            <p *ngIf="item.end_date && item.end_date !== 'null' ">{{item.end_date}}</p></span>
-          <span class="cell primary" data-label="Employee">{{item.days}} days</span>
-
-          <span class="cell primary" data-label="Employee">
-            <button *ngIf="item.user.nbr_days>0 "
-            class="btn btn-success">{{item.user.nbr_days}} </button>
-       
-            <button *ngIf="item.user.nbr_days<=0 "
-            class="btn btn-danger">{{item.user.nbr_days}} </button>
-            Days </span>    
-
-          <span class="cell primary" data-label="Employee">{{item.motif.reason}}</span>
-          <span class="cell primary" data-label="Employee">
-            <p *ngIf="item.refus_reason && item.refus_reason !== 'null' ">
-              {{item.refus_reason}}
-            </p>
-          </span>
-          <span class="cell" data-label="Trans">
-            <button 
-            (click)="getdata(item.status,item.refus_reason, item.id)"
-             data-toggle="modal" data-target="#exampleModal1" class="update">Update </button>&nbsp;
+                    <button *ngIf="item.status==='encours' "
+                    class="btn btn-warning">{{item.status}}</button>
+                    <button *ngIf="item.status==='refused' "
+                    class="btn btn-danger">{{item.status}}</button>
+                    <button *ngIf="item.status==='accepted' "
+                    class="btn btn-success">{{item.status}}</button>
+                </td>
+                <td>
+                    <h6 *ngIf="item.start_date && item.start_date !== 'null' ">{{item.start_date}}</h6>
+                </td>
+                <td>
+                    <h6 *ngIf="item.end_date && item.end_date !== 'null' ">{{item.end_date}}</h6>
     
-          </span>
-
-        </div>
-  
-  
-      </div><br>
-      <div style="text-align:right;">
+                </td>
+                <td><h6>{{item.days}} days</h6></td>
+                <td>
+                    <button *ngIf="item.user.nbr_days>0 "
+                        class="btn btn-success">{{item.user.nbr_days}}<h6>Days</h6> </button>
+                        <button *ngIf="item.user.nbr_days==0 "
+                          class="btn btn-success">{{item.user.nbr_days}}<h6>Days</h6> </button>
+                        <button *ngIf="item.user.nbr_days<=0 "
+                        class="btn btn-danger">{{item.user.nbr_days}}<h6>Days</h6> </button>
+                        
+                </td>
+                <td>
+                  <h6>{{item.motif.reason}}</h6>
+                    
+                </td>
+                <td>
+                    <h6 *ngIf="item.description && item.description !== 'null' ">
+                        {{item.description}}
+                    </h6>
+                </td>
+                <td>
+                    <h6 *ngIf="item.refus_reason && item.refus_reason !== 'null' ">
+                        {{item.refus_reason}}
+                    </h6>
+                </td>
+                <td>
+                  <button
+                  *ngIf="item.status==='encours' ||item.status==='refused'"
+                  (click)="getdata(item.status,item.refus_reason, item.id)"
+                  data-toggle="modal" data-target="#exampleModal1" class="update">Update </button>
+                  <button
+                  *ngIf="item.status==='accepted' "
+                   readonly style="cursor: not-allowed;"
+                   (click)="getdata(item.status,item.refus_reason, item.id)"
+                    class="update">Update </button>
+                  
+                </td>
+      
+            </tr>
+     
+        </tbody>
+    </table>
+    <div style="text-align:right;">
         <pagination-controls (pageChange)="p = $event"></pagination-controls>
       </div>
-      </section>
+    </section>
+    
 
   
-    
-    </main>
-
-
-    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Update   Demande</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form [formGroup]="update" #f="ngForm" (ngSubmit)="updatedemande(f) "> 
-              <div class="form-group">
-                <label for="exampleFormControlInput1">Status </label>
-                <select class="form-control" 
-                
-                id="exampleFormControlSelect1" 
-                [(ngModel)]="datademande.status" required
-                  formControlName="status">
-                  <option value="encours">En Cours</option>
-                  <option value="accepted">accepted</option>
-                  <option value="refused">refus</option>
-                </select>
-              </div>
-              <div class="form-group"   *ngIf="datademande.refus_reason !== '' && datademande.refus_reason !== 'null' ">
-                
-                <label for="exampleFormControlInput1">Refus Reason  </label>
-                <input  type="text"
-          
-              
-                formControlName="refus_reason"
-                 [(ngModel)]="datademande.refus_reason" 
-                   ngModel class="form-control"    required>
-              </div>
-              
-              <br>
-              <div class="form-group">
-                  <button   class="btn btn-danger" type="submit">save</button>
-              </div>
-            </form>
-          </div>   
+  </main>
+  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update   Demande</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="modal-body">
+          <form [formGroup]="update" #f="ngForm" (ngSubmit)="updatedemande(f) "> 
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Status </label>
+              <select class="form-control" 
+              
+              id="exampleFormControlSelect1" 
+              [(ngModel)]="datademande.status" required
+                formControlName="status">
+                <option value="encours">En Cours</option>
+                <option value="accepted">accepted</option>
+                <option value="refused">refus</option>
+              </select>
+            </div>
+            <div class="form-group"   *ngIf="datademande.refus_reason !== '' && datademande.refus_reason !== 'null' ">
+              
+              <label for="exampleFormControlInput1">Refus Reason  </label>
+              <input  type="text"
+        
+            
+              formControlName="refus_reason"
+               [(ngModel)]="datademande.refus_reason" 
+                 ngModel class="form-control"    required>
+            </div>
+            
+            <br>
+            <div class="form-group">
+                <button   class="btn btn-danger" type="submit">save</button>
+            </div>
+          </form>
+        </div>   
       </div>
     </div>
+  </div>

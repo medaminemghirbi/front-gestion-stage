@@ -30,6 +30,7 @@ export class EmployeeDemandesComponent implements OnInit {
     end_date:'',
     reason:'',
     refus_reason:'',
+    description:''
 
   }
   constructor(private usersService:EmployeePanelService,private route:Router ,private activatedRoute: ActivatedRoute) {
@@ -41,6 +42,7 @@ export class EmployeeDemandesComponent implements OnInit {
       end_date: new FormControl('', [Validators.required]),
       reason: new FormControl('', [Validators.required]),
       refus_reason: new FormControl('', [Validators.required]),
+      description: new FormControl('', [Validators.required]),
 
     });
 
@@ -49,11 +51,14 @@ export class EmployeeDemandesComponent implements OnInit {
       end_date: new FormControl('', [Validators.required]),
       motif_id: new FormControl('', [Validators.required]),
       user_id: new FormControl('', [Validators.required]),
+      description: new FormControl('', [Validators.required]),
 
     });
    }
 
   ngOnInit(): void {
+    this.date = moment(Date.now()).format("YYYY-MM-DD"); 
+    console.log(this.date)
     this.usersService.getdemandebyemployee(this.employeedata.id).subscribe(
       (response:any)=>{
       console.log(response)
@@ -83,13 +88,15 @@ export class EmployeeDemandesComponent implements OnInit {
       this.messageErr="We dont't found this category in our database"}
     }) 
   }
-  getdata(status:string,start_date:string,end_date:string,reason:string,refus_reason:string,id:any){
+  getdata(status:string,start_date:string,end_date:string,reason:string,refus_reason:string,description:string,id:any){
 
     this.datareason.status= status 
     this.datareason.start_date= start_date 
     this.datareason.end_date= end_date 
     this.datareason.reason= reason 
+  
     this.datareason.refus_reason =refus_reason
+    this.datareason.description= description
     debugger
     console.log(this.datareason)
   }
@@ -122,10 +129,11 @@ export class EmployeeDemandesComponent implements OnInit {
 
 
   addnewdemande (f:any){
+
   const formData = new FormData();
     formData.append('start_date', this.adddemande.value.start_date);
     formData.append('end_date', this.adddemande.value.end_date);
-    
+    formData.append('description', this.adddemande.value.description);
     formData.append('user_id', this.employeedata.id);
     formData.append('motif_id', this.adddemande.value.motif_id);   
 
@@ -133,41 +141,62 @@ export class EmployeeDemandesComponent implements OnInit {
   
   console.log(formData)
   debugger
-  if(this.adddemande.value.start_date<=this.adddemande.value.end_date){
-    debugger
-    this.usersService.addnewdemande(formData).subscribe( ()=>{
-
-      this.route.navigate(['/employee-demandes'])   ;
-  
-        this.submitted = true ;  
-        Swal.fire({
-          icon: 'success',
-          title: 'success...',
-          text: 'Saved !' ,
-       
-            showConfirmButton: true,
-            timer: 1500
-        })  
-        window.location.reload();
-    },(err:HttpErrorResponse)=>{
-  
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'error server side !' ,
-        footer: '<a href="">Why do I have this issue?</a>'
-      })
-        
-    }) ;  
-  }else{
-
+  if( this.adddemande.value.start_date== this.date || this.adddemande.value.end_date== this.date ){
     Swal.fire({
       icon: 'error',
       title: 'Oops...',
-      text: 'start date must be before end date!' ,
+      text: 'demande must start after today with 1 day' ,
       footer: '<a href="">Why do I have this issue?</a>'
-    })
+    }) 
+  }else{
+    if(this.adddemande.value.start_date< this.date && this.adddemande.value.end_date< this.date ){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'start date must be bigger than current date' ,
+        footer: '<a href="">Why do I have this issue?</a>'
+      }) 
+    }else{
+  
+      if(this.adddemande.value.start_date<=this.adddemande.value.end_date){
+        debugger
+        this.usersService.addnewdemande(formData).subscribe( ()=>{
+    
+          this.route.navigate(['/employee-demandes'])   ;
+      
+            this.submitted = true ;  
+            Swal.fire({
+              icon: 'success',
+              title: 'success...',
+              text: 'Saved !' ,
+           
+                showConfirmButton: true,
+                timer: 1500
+            })  
+            window.location.reload();
+        },(err:HttpErrorResponse)=>{
+      
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'error server side !' ,
+            footer: '<a href="">Why do I have this issue?</a>'
+          })
+            
+        }) ;  
+      }else{
+    
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'start date must be before end date!' ,
+          footer: '<a href="">Why do I have this issue?</a>'
+        })
+      }
+    }
   }
+
+
 
 }
 }
