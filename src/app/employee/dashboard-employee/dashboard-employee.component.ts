@@ -13,16 +13,21 @@ export class DashboardEmployeeComponent implements OnInit {
   messageErr =''
   counter:any
   dataArray:any = [] ;
+  datemployee:any = [] ;
   constructor(private usersService:EmployeePanelService,private route:Router) { 
     this.employeedata = JSON.parse( sessionStorage.getItem('employeedata') !) ;
-
+    console.log(this.employeedata )
   }
 
   ngOnInit(): void {
     this.usersService.getemployeedemandes(this.employeedata.id).subscribe(data=>{
       this.dataArray=data,
-      this.counter = this.dataArray.length
-      console.log(this.dataArray), (err:HttpErrorResponse)=>{
+      this.counter = this.dataArray.length, (err:HttpErrorResponse)=>{
+      this.messageErr="We dont't found this user in our database"} 
+    }) 
+    this.usersService.getlogeedemployee().subscribe(data=>{
+      this.datemployee=data,
+      console.log(this.datemployee), (err:HttpErrorResponse)=>{
       this.messageErr="We dont't found this user in our database"} 
     }) 
   }

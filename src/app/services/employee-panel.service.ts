@@ -38,5 +38,9 @@ export class EmployeePanelService {
   resetpassword(token:string,email:any){
     return this.http.put(environment.urlBackend+'password_resets/'+token,email);
   }
-
+  //*looged user **/
+  getlogeedemployee()
+  {
+    return this.http.get(`${environment.urlBackend}`+'logged_in/')
+  }
 }

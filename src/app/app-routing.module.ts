@@ -20,11 +20,12 @@ const routes: Routes = [
   {path:'employee-requests',canActivate:[GuardGuard], component:EmployeeRequestsComponent},
   {path:'admin-profil',canActivate:[GuardGuard], component:AdminProfilComponent},
   {path:'manage-reasons',canActivate:[GuardGuard],component:ManageReasonsComponent},
-  {path:'employee-profil',component:EmployeeProfilComponent},
-  {path:'dashboard-employee',component:DashboardEmployeeComponent},
-  {path:'employee-demandes',component:EmployeeDemandesComponent},
+  {path:'employee-profil',canActivate:[GuardGuard],component:EmployeeProfilComponent},
+  {path:'dashboard-employee',canActivate:[GuardGuard],component:DashboardEmployeeComponent},
+  {path:'employee-demandes',canActivate:[GuardGuard],component:EmployeeDemandesComponent},
   {path:'reset/:token', component: ResetPasswordComponent},
   {path:'forgot-password',component:ForgotPasswordComponent},
+
 ];
 
 @NgModule({
