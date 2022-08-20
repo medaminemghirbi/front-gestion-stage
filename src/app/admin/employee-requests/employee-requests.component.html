@@ -23,7 +23,7 @@
                 <th><h6>demande Start_date</h6></th>
                 <th><h6>demande Ended_date</h6> </th>
                 <th><h6>Days_nbr</h6></th>
-                <th><h6>Employee_in_Balance</h6></th>
+                <th><h6>Employee_Balance</h6></th>
                 <th><h6>Reason</h6></th>
                 <th><h6>description</h6></th>
                 <th><h6>Refus_Reason</h6></th>
@@ -60,11 +60,11 @@
                 <td><h6>{{item.days}} days</h6></td>
                 <td>
                     <button *ngIf="item.user.nbr_days>0 "
-                        class="btn btn-success">{{item.user.nbr_days}}<h6>Days</h6> </button>
+                        class="btn btn-success btn-lg "><h6>{{item.user.nbr_days}} Days in balance</h6>  </button>
                         <button *ngIf="item.user.nbr_days==0 "
-                          class="btn btn-success">{{item.user.nbr_days}}<h6>Days</h6> </button>
+                          class="btn btn-success btn-lg"><h6>{{item.user.nbr_days}} Days </h6></button>
                         <button *ngIf="item.user.nbr_days<=0 "
-                        class="btn btn-danger">{{item.user.nbr_days}}<h6>Days</h6> </button>
+                        class="btn btn-danger btn-lg"><h6>{{item.user.nbr_days}} Days </h6> </button>
                         
                 </td>
                 <td>
