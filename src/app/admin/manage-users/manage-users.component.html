@@ -31,9 +31,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of dataArray| filter:searchedKeyword ; index as i">
-                <td>
-                    <img src="{{item.user_image_url}}"  height="65" width="90">
+          <tr *ngFor="let item of dataArray|paginate: { 
+            itemsPerPage: itemsPerPage,
+             currentPage: p 
+            }| filter:searchedKeyword  ; index as i">              
+              <td>
+                    <img src="{{item.user_image_url}}" 
+                    style="  border-radius: 50%;"
+                     height="135" width="150">
                 </td>
                 <td>          
                     <h6 *ngIf="item.firstname && item.firstname!== 'null' ">{{item.firstname}}</h6>
@@ -71,7 +76,9 @@
      
         </tbody>
     </table>
-
+    <div style="text-align:right;">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
     </section>
     
 

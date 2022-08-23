@@ -14,6 +14,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 export class ManageUsersComponent implements OnInit {
   counter:any
   dataArray:any = [] ;
+  itemsPerPage = 10;
   p:number = 1 ;
   messageErr =''
   image:any;

@@ -83,6 +83,8 @@
 					<label for="exampleFormControlInput1">Abscence Motif </label>
 					<select class="form-control" id="exampleFormControlSelect1"
 					 formControlName="motif_id" name="id">
+					 <option value="" disabled selected>Select your Abscence</option>
+
 					  <option *ngFor=" let item of dataArray " 
 					  [value]="item.id"> {{item.reason}} </option>
 					</select>
@@ -137,6 +139,8 @@
 					<textarea   rows="4" cols="50"  readonly style="cursor: not-allowed;"  type="text" class="form-control" formControlName="description" name="description" [(ngModel)]="datareason.description"    rows="3" required > 
 						</textarea>
 				</div> 
+				<div class="alert alert-danger" *ngIf="messageError">{{messageError}}</div>
+
 				<br>
 		
 			  </form>
