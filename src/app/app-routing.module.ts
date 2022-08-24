@@ -12,6 +12,7 @@ import { EmployeeProfilComponent } from './employee/employee-profil/employee-pro
 import { ManageReasonsComponent } from './admin/manage-reasons/manage-reasons.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
   {path:'',component:IndexComponent},
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path:'employee-demandes',canActivate:[GuardGuard],component:EmployeeDemandesComponent},
   {path:'reset/:token', component: ResetPasswordComponent},
   {path:'forgot-password',component:ForgotPasswordComponent},
+  {path:'contact',component:ContactComponent}
 
 ];
 
