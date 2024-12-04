@@ -1,0 +1,7 @@
+-backend
+WE WILL ADD firstname, adress, user_image_url(as string) ==> attributes
+method count all for Superadmin
+token 
+-frontend 
+we will do a lot of change of APIs AND SOME improvement of callbacks
+we will avoid using environement and url of it we will change it wil localhost:8080(users)/localhost:8100(demandes)
