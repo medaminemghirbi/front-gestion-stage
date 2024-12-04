@@ -21,7 +21,7 @@ export class EmployeeProfilComponent implements OnInit {
     this.employeedata = JSON.parse( sessionStorage.getItem('employeedata') !) ;
     this.imageupdate = new FormGroup({ avatar: new FormControl('', [Validators.required]), });
     this.upadate = new FormGroup({
-       firstname: new FormControl('', [Validators.required]),
+      name: new FormControl('', [Validators.required]),
        lastname: new FormControl('', [Validators.required]),
        email: new FormControl('', [Validators.required]),
        adress: new FormControl('', [Validators.required]),
@@ -34,7 +34,7 @@ export class EmployeeProfilComponent implements OnInit {
    updateadminprofil (f:any){
     let data=f.value
     const formData = new FormData();
-    formData.append('firstname', this.upadate.value.firstname);
+    formData.append('name', this.upadate.value.name);
     formData.append('lastname', this.upadate.value.lastname);
     formData.append('email', this.upadate.value.email);
     formData.append('adress', this.upadate.value.adress);
@@ -58,7 +58,7 @@ export class EmployeeProfilComponent implements OnInit {
         let indexId=this.employeedata.findIndex((obj:any)=>obj.id==this.employeedata.id)
 
         this.employeedata[indexId].email=data.email
-        this.employeedata[indexId].firstname=data.firstname
+        this.employeedata[indexId].name=data.name
         this.employeedata[indexId].lastname=data.lastname
         this.employeedata[indexId].adress=data.adress
         this.employeedata[indexId].password=data.password

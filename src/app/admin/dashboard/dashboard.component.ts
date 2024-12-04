@@ -55,7 +55,7 @@ export class DashboardComponent implements OnInit {
     this.adminservice.countall().subscribe(result=>{
    
       this.chartDatasets =[ 
-        { data: [result.data[0], result.data[1], result.data[2], result.data[3]],label: 'Com&Dev Officiel statistic'  }
+        { data: [result.data[0], result.data[1], result.data[2], result.data[3]],label: 'Leave Demandes  statistic'  }
       ];
      // this.chartDatasets = [ this.chartDatasets[0] ]
      this.chartReady=true; 

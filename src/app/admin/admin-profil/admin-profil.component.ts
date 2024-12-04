@@ -21,7 +21,7 @@ export class AdminProfilComponent implements OnInit {
     this.admindata = JSON.parse( sessionStorage.getItem('admindata') !) ;
     this.imageupdate = new FormGroup({ avatar: new FormControl('', [Validators.required]), });
     this.upadate = new FormGroup({
-       firstname: new FormControl('', [Validators.required]),
+       name: new FormControl('', [Validators.required]),
        lastname: new FormControl('', [Validators.required]),
        email: new FormControl('', [Validators.required]),
        adress: new FormControl('', [Validators.required]),
@@ -34,7 +34,7 @@ export class AdminProfilComponent implements OnInit {
    updateadminprofil (f:any){
     let data=f.value
     const formData = new FormData();
-    formData.append('firstname', this.upadate.value.firstname);
+    formData.append('name', this.upadate.value.name);
     formData.append('lastname', this.upadate.value.lastname);
     formData.append('email', this.upadate.value.email);
     formData.append('adress', this.upadate.value.adress);
@@ -58,7 +58,7 @@ export class AdminProfilComponent implements OnInit {
         let indexId=this.admindata.findIndex((obj:any)=>obj.id==this.admindata.id)
 
         this.admindata[indexId].email=data.email
-        this.admindata[indexId].firstname=data.firstname
+        this.admindata[indexId].name=data.name
         this.admindata[indexId].lastname=data.lastname
         this.admindata[indexId].adress=data.adress
         this.admindata[indexId].password=data.password

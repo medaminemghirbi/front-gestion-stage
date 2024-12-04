@@ -41,7 +41,7 @@
                      height="135" width="150">
                 </td>
                 <td>          
-                    <h6 *ngIf="item.firstname && item.firstname!== 'null' ">{{item.firstname}}</h6>
+                    <h6 *ngIf="item.name && item.name!== 'null' ">{{item.name}}</h6>
                 </td>
                 <td>          
                     <h6 *ngIf="item.lastname && item.lastname!== 'null' ">{{item.lastname}}</h6>
@@ -60,7 +60,7 @@
 
                 </td>
                 <td>
-                    <button (click)="getdata(item.email,item.firstname,item.lastname,item.password,item.adress,item.image_url,item.id)"
+                    <button (click)="getdata(item.email,item.name,item.lastname,item.password,item.adress,item.image_url,item.id)"
                     data-toggle="modal" data-target="#exampleModal2" class="update">Update </button>&nbsp;
                 </td>
                 <td>
@@ -136,8 +136,8 @@
               <input  readonly style="cursor: not-allowed;" type="text" name="email" [(ngModel)]="dataemp.email" formControlName="email"  class="form-control"    required>
             </div>
             <div class="form-group">
-              <label for="exampleFormControlTextarea1">firstname  </label>        
-              <input type="text" class="form-control" [(ngModel)]="dataemp.firstname" formControlName="firstname" name="firstname"    rows="3" required /> 
+              <label for="exampleFormControlTextarea1">name  </label>        
+              <input type="text" class="form-control" [(ngModel)]="dataemp.name" formControlName="name" name="name"    rows="3" required /> 
             </div> 
             <div class="form-group">
               <label for="exampleFormControlTextarea1">LastName  </label>        

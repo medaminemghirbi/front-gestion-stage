@@ -10,8 +10,9 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
   public connecte : boolean = false ; 
   logged_in : boolean = false ; 
+  access_token: string | null = null;
   constructor(private http : HttpClient , public router: Router) { }
- 
+
   login(data:any): Observable<any> {
     this.logged_in = true ;
     this.connecte = true;
@@ -28,4 +29,11 @@ export class AuthService {
     return this.http.get(environment.urlBackend + 'logged_in/')
   }
 
+    // Token retrieval function
+    getToken(): string | null {
+      if (!this.access_token) {
+        this.access_token = sessionStorage.getItem('access_token');
+      }
+      return this.access_token;
+    }
 }

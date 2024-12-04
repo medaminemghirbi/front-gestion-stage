@@ -59,6 +59,8 @@ export class IndexComponent implements OnInit {
         if(response.logged_in ==true && response.user.role =="admin"  ){ 
           sessionStorage.setItem( 'admindata', JSON.stringify( response.user ) );
           sessionStorage.setItem( 'logged_in', JSON.stringify( response.logged_in ) );
+          sessionStorage.setItem( 'access_token', JSON.stringify( response.token ) );
+
           console.log(response);
           this.route.navigate(['/dashboard-RH']);
         }
@@ -66,6 +68,8 @@ export class IndexComponent implements OnInit {
         {
           sessionStorage.setItem( 'employeedata', JSON.stringify( response.user ) );
           sessionStorage.setItem( 'logged_in', JSON.stringify( response.logged_in ) );
+          sessionStorage.setItem( 'access_token', JSON.stringify( response.token ) );
+
           this.route.navigate(['/dashboard-employee']);
         }
         else{

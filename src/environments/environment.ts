@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false ,
-  urlBackend:'https://back-gestion-stage.vercel.app/',
+  urlBackend:'http://127.0.0.1:3000/',
   //urlplayement:'https://api.preprod.konnect.network/api/v2/payments/init-payment'
 };
 

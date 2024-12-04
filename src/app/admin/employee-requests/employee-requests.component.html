@@ -6,7 +6,7 @@
   <main role="main">
     
   <section class="panel important">
-          <div style="text-align: center;"><h6>Com&Dev  Abscence Demandes DETAILS</h6></div>	
+          <div style="text-align: center;"><h6>Leave Demandes DETAILS</h6></div>	
           <form
           class="card-header py-3" >
           <div class="input-group">
@@ -36,7 +36,7 @@
                  currentPage: p 
                 }| filter:searchedKeyword  ; index as i">
                 <td>
-                    <h6 *ngIf="item.user.lastname|| item.user.fisrtname && item.user.lastname ||item.user.firstname !== 'null' ">{{item.user.lastname}} {{item.user.firstname}}</h6>
+                    <h6 *ngIf="item.user.lastname|| item.user.fisrtname && item.user.lastname ||item.user.name !== 'null' ">{{item.user.lastname}} {{item.user.name}}</h6>
                 </td>
                 <td>
                     <h6 *ngIf="item.user.email && item.user.email !== 'null' ">{{item.user.email}}</h6>

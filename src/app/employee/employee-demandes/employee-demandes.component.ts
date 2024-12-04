@@ -35,7 +35,7 @@ export class EmployeeDemandesComponent implements OnInit {
   }
   constructor(private usersService:EmployeePanelService,private route:Router ,private activatedRoute: ActivatedRoute) {
     this.employeedata = JSON.parse( sessionStorage.getItem('employeedata') !);
-    console.log(this.employeedata.firstname)  
+    console.log(this.employeedata.name)  
     this.getdataa = new FormGroup({
       status: new FormControl('', [Validators.required]),
       start_date: new FormControl('', [Validators.required]),

@@ -29,7 +29,7 @@ export class ManageUsersComponent implements OnInit {
   submitted:any
   dataemp={
     id : '',
-    firstname:'',
+    name:'',
     lastname:'',
     email:'',
     adress:'',
@@ -44,7 +44,7 @@ export class ManageUsersComponent implements OnInit {
       role: new FormControl('', [Validators.required]),
     });
     this.updateemployee = new FormGroup({
-      firstname: new FormControl('', [Validators.required]),
+      name: new FormControl('', [Validators.required]),
       lastname: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),
@@ -66,10 +66,10 @@ export class ManageUsersComponent implements OnInit {
     }) 
 
   }
-  getdata(email:string,firstname:string,lastname:string,adress:string,password:string,image_url:string,id:any){
+  getdata(email:string,name:string,lastname:string,adress:string,password:string,image_url:string,id:any){
     this.messageSuccess=''
     this.dataemp.email= email 
-    this.dataemp.firstname= firstname 
+    this.dataemp.name= name 
     this.dataemp.lastname= lastname 
     this.dataemp.adress= adress 
     this.dataemp.password =password
@@ -121,7 +121,7 @@ export class ManageUsersComponent implements OnInit {
     let dataempe=f.value
     const formData = new FormData();
     formData.append('avatar', this.image );
-    formData.append('firstname', this.updateemployee.value.firstname);
+    formData.append('name', this.updateemployee.value.name);
     formData.append('lastname', this.updateemployee.value.lastname);
     formData.append('adress', this.updateemployee.value.adress);
     formData.append('email', this.updateemployee.value.email);
@@ -143,7 +143,7 @@ export class ManageUsersComponent implements OnInit {
             let indexId=this.dataArray.findIndex((obj:any)=>obj.id==this.dataemp.id)
     
             //this.dataArray[indexId].id=data.id
-            this.dataArray[indexId].firstname=dataempe.firstname
+            this.dataArray[indexId].name=dataempe.name
             this.dataArray[indexId].lastname=dataempe.lastname
             this.dataArray[indexId].adress=dataempe.adress
             this.dataArray[indexId].email=dataempe.email
